@@ -19,17 +19,16 @@
         include('../vue/home.php');
     } else {
         if ($_GET['page'] == 2) {
-            include('../vue/chats.php');
+            include('../vue/projets.php');
         } elseif ($_GET['page'] == 3) {
-            include('../vue/fiche_chat.php');
+            include('../vue/services.php');
         } elseif ($_GET['page'] == 4) {
-            include('../vue/articles.php');
+            include('../vue/about_us.php');
         } elseif ($_GET['page'] == 5) {
-            include('../vue/article.php');
+            include('../vue/contact.php');
         }
     }
     include '../vue/footer.php';
-
     ?>
 
     <script src="assets/js/js.js"></script>

@@ -9,20 +9,21 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto me-md-5 mb-2 mb-lg-0">
+                <?php $page = isset($_GET['page']) ? $_GET['page'] : 'home'; ?>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                    <a class="nav-link <?= ($page == 'home') ? 'active' : '' ?>" aria-current="page" href="../public/index.php">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">PROJECTS</a>
+                    <a class="nav-link <?= ($page == '2') ? 'active' : '' ?>" href="../public/index.php?page=2">PROJECTS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">SERVICES</a>
+                    <a class="nav-link <?= ($page == '3') ? 'active' : '' ?>" href="../public/index.php?page=3">SERVICES</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">ABOUT US</a>
+                    <a class="nav-link <?= ($page == '4') ? 'active' : '' ?>" href="../public/index.php?page=4">ABOUT US</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CONTACT</a>
+                    <a class="nav-link <?= ($page == '5') ? 'active' : '' ?>" href="../public/index.php?page=5">CONTACT</a>
                 </li>
             </ul>
         </div>
