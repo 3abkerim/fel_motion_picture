@@ -79,7 +79,7 @@
                 <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                    <p>Paris, 75008, FR</p>
+                    <p>78 Avenue des Champs Elysées <br> 75008 Paris</p>
                     <p>
                         <a href="../public/index.php?page=29" class="">Nous contacter</a>
                     </p>

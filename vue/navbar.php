@@ -3,8 +3,17 @@
         <a class="ms-3" href="#">
             <img src="../public/assets/images/logo/FEL_logo.png" width="90" height="auto" alt="fel-motion-picture-logo">
         </a>
+
+
+
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+
             <span class="navbar-toggler-icon"></span>
+
+
+
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

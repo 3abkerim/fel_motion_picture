@@ -1,12 +1,22 @@
+/* FONT */
 @font-face {
     font-family: "roboto";
     src: url(../fonts/Roboto/Roboto-Regular.ttf);
-  }
+}
 
 @font-face {
 font-family: "oswald";
 src: url(../fonts/Oswald/Oswald-Regular.ttf);
 }
+
+@font-face {
+    font-family: "oswald-light";
+    src: url(../fonts/Oswald/Oswald-ExtraLight.ttf);
+    }
+
+/* FONT */
+
+/* GENERALE */
 *{
     margin: 0;
     padding: 0;
@@ -16,31 +26,10 @@ body{
     background-color: black;
     font-family: 'oswald';
 }
-nav{
-    background-color: black;
-}
 .container-fluid{
     padding-left: 0rem;
     padding-right: 0rem;
     overflow: hidden;
-}
-.nav-link{
-    color: rgba(154, 154, 154, 0.989);
-    /* font-family: 'roboto'; */
-}
-.nav-link:hover, .nav-link:focus {
-    color: white ;
-}
-.active {
-    color: #ffffff !important; 
-}
-.video-home{
-    height: 100vh;
-    width: 100%;
-}
-.title{
-    text-align: center;
-    color: white;
 }
 .white-block{
     border: solid 3px white;
@@ -58,10 +47,40 @@ nav{
     margin-bottom: 40px;
     text-transform: uppercase;
 }
+/* GENERALE */
+
+
+/* NABAR */
+nav{
+    background-color: black;
+}
+.nav-link{
+    color: rgba(154, 154, 154, 0.989);
+    /* font-family: 'roboto'; */
+}
+.nav-link:hover, .nav-link:focus {
+    color: white ;
+}
+.active {
+    color: #ffffff !important; 
+}
+/* NABAR */
+
+/* HOME */
+.video-home{
+    height: 100vh;
+    width: 100%;
+}
+.title{
+    text-align: center;
+    color: white;
+}
+
 .project-img img{
     width: 900px;
     height: auto;
 }
+
 .logos{
     overflow: hidden;
     padding: 60px 0;
@@ -69,7 +88,7 @@ nav{
     position: relative;
 }
 .logos-slide{
-    animation: 35s slide infinite linear;
+    animation: 80s slide infinite linear;
     display: inline-block;
 }
 .logos-slide img{
@@ -97,6 +116,19 @@ nav{
     left: 0;
 }
 
+@keyframes slide {
+    from{
+        transform: translateX(0%);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+
+/* HOME */
+
+/* FOOTER */
 footer{
     background: black;
     color: white;
@@ -109,6 +141,9 @@ footer a{
     width: 30px;
     height: auto;
 }
+/* FOOTER */
+
+/* PROJETS */
 .project-poster{
     text-align: center;
 }
@@ -117,7 +152,6 @@ footer a{
     height: auto;
 
 }
-
 .project-text{
     margin: 10px;
     color: white;
@@ -137,13 +171,15 @@ footer a{
     font-size: 35px;
     white-space: nowrap;
 }
-.test{
-   float: right;
-   margin-right: 30px;
-   margin-top: 30px;
-}
+.project-date{
+    float: right;
+    margin-right: 30px;
+    margin-top: 30px;
+ }
+/* PROJETS */
 
-/*       ScrollBar 2        */
+
+/* ScrollBar  */
         
 ::-webkit-scrollbar {
     width: 2px;
@@ -161,11 +197,103 @@ footer a{
     background-color: #363636;
 }
 
-@keyframes slide {
-    from{
-        transform: translateX(0);
-    }
-    to{
-        transform: translateX(-100%);
-    }
+/* ScrollBar  */
+
+.service-name{
+    color: rgba(154, 154, 154, 0.989);
+    text-align: left;
+    margin-left: 20px;
+    cursor: pointer;
 }
+.service-name:hover{
+    color: white;
+}
+.line{
+    border-top: 5px solid rgb(183, 183, 183);
+    margin-top: 20px;
+    border-radius: 25px;
+}
+article{
+    color: white;
+    font-size: 22px;
+    text-align: justify;
+
+}
+.title-philosophy{
+    text-transform: uppercase;
+    color: white;
+    font-size: 30px;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+.founders{
+    text-align: center;
+    margin-top: 15px;
+}
+.founders img{
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+    
+}
+.founder-info{
+    color: white;
+    font-family: 'oswald-light';
+
+}
+
+/* contact */
+
+input{
+    width:100%;
+    padding:15px;
+    border-radius:15px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+    height:50px;
+    margin-bottom: 25px;
+}
+textarea {
+    width:100%;
+    resize: vertical;
+    padding:15px;
+    border-radius:15px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+    height:150px;
+  }
+  
+.titles-form{
+    color: white;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+.black-button{
+    border: solid 3px white;
+    width: 370px;
+    margin: auto;
+    padding: 15px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    background: black;
+    color: white;
+}
+
+.black-button:hover{
+    border: solid 3px black;
+    color: black;
+    background: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .logos:before, .logos:after{
+        width: 100px;
+    }
+  }
+  
+@media only screen and (max-width: 1280px) {
+  .nav-item{
+    margin: auto;
+  }
+}
+

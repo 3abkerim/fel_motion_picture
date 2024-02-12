@@ -18,12 +18,12 @@
                 Donec id cursus ligula. Nullam dictum massa felis, vitae viverra leo congue sit amet.
                 Suspen.
             </div>
-            <div class="project-type my-auto">project type</div>
+            <div class="project-type my-auto">project type </div>
         </div>
     </div>
     <div class="row">
         <div class="col-12 text-white text-uppercase">
-            <h3 class="test">october 2022</h3>
+            <h3 class="project-date">october 2022</h3>
         </div>
     </div>
 </section>
@@ -56,7 +56,7 @@
     </div>
     <div class="row">
         <div class="col-12 text-black text-uppercase">
-            <h3 class="test">october 2022</h3>
+            <h3 class="project-date">october 2022</h3>
         </div>
     </div>
 </section>
