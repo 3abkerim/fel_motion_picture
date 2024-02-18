@@ -15,6 +15,9 @@
     <div class="white-block mt-5">
         <h2 class="title my-auto">partners and clients</h2>
     </div>
+
+
+
     <div class="logos">
         <div class="logos-slide">
             <img src="../public/assets/images/so_freak.png" alt="">
@@ -23,4 +26,5 @@
             <img src="../public/assets/images/bassem_2.png" alt="">
         </div>
     </div>
+
 </section>

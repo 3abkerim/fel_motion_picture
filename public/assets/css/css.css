@@ -268,7 +268,12 @@ textarea {
     text-transform: uppercase;
     font-size: 30px;
 }
-.black-button{
+
+/* button contact */
+
+.black-button {
+    position: relative;
+    overflow: hidden;
     border: solid 3px white;
     width: 370px;
     margin: auto;
@@ -277,13 +282,35 @@ textarea {
     text-transform: uppercase;
     background: black;
     color: white;
-}
+    transition: background-color 0.3s ease, color 0.3s ease; 
+  }
+  
+  .black-button::before {
+    content: '';
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white; 
+    transition: top 0.2s ease-in; 
+    z-index: 0;
+  }
+  
+  .black-button:hover::before {
+    top: 0; 
+  }
+  
+  .black-button:hover {
+    color: black; 
+  }
+  
+  .black-button h2 {
+    position: relative;
+    z-index: 1;
+  }
+  
 
-.black-button:hover{
-    border: solid 3px black;
-    color: black;
-    background: white;
-}
 
 @media only screen and (max-width: 600px) {
     .logos:before, .logos:after{
