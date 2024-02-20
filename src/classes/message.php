@@ -1,77 +1,56 @@
 <?php
+
+require 'Database.php';
+
 class Message
 {
-    private $firstName;
-    private $lastName;
+    private $db;
+    private $name;
     private $email;
     private $subject;
     private $message;
     private $dateTime;
 
-    public function __construct($firstName, $lastName, $email, $subject, $message, $date)
+    public function __construct($name, $email, $subject, $message, $dateTime)
     {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
+        $this->db = (new Database())->connect();
+        $this->name = $name;
         $this->email = $email;
         $this->subject = $subject;
         $this->message = $message;
-        $this->dateTime = $date;
+        $this->dateTime = $dateTime;
     }
 
-    public function getFirstName()
+    public function save()
     {
-        return $this->firstName;
-    }
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-    public function getEmail()
-    {
-        return $this->email;
-    }
-    public function getSubject()
-    {
-        return $this->subject;
-    }
-    public function getMessage()
-    {
-        return $this->message;
-    }
-    public function getDate()
-    {
-        return $this->dateTime;
+        try {
+            $stmt = $this->db->prepare("INSERT INTO messages (name, email, subject, message, date) VALUES (?, ?, ?, ?, ?)");
+            $stmt->execute([$this->name, $this->email, $this->subject, $this->message, $this->dateTime]);
+            return $this->db->lastInsertId();
+        } catch (PDOException $e) {
+            throw new Exception("Unable to save message: " . $e->getMessage());
+        }
     }
 
-
-    public function setFirstName($firstName)
+    public function getAll()
     {
-        $this->firstName = $firstName;
-    }
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-    }
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-    public function setSubject($subject)
-    {
-        $this->subject = $subject;
-    }
-    public function setMessage($message)
-    {
-        $this->message = $message;
-    }
-    public function setDate($date)
-    {
-        $this->dateTime = $date;
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM messages");
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            throw new Exception("Unable to retrieve messages: " . $e->getMessage());
+        }
     }
 
-    public function sendMessage($firstName, $lastName, $email, $subject, $message, $date)
+    public function getById($id)
     {
-        $reqSendMessage = $bdd->prepare('INSERT INTO messages (nom,prenom, email, subject, message, date) VALUES (?,?,?,?,?,?)');
-        $reqSendMessage->execute([$this->firstName, $this->lastName, $this->email, $this->subject, $this->message, $this->date]);
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM messages WHERE id = ?");
+            $stmt->execute([$id]);
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            throw new Exception("Unable to retrieve message: " . $e->getMessage());
+        }
     }
 }
