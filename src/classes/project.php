@@ -1,6 +1,7 @@
 <?php
-class project
+class Project
 {
+    private $db;
     private $name;
     private $date;
     private $content;
@@ -8,63 +9,70 @@ class project
     private $order;
     private $deleted;
 
-    public function __construct($projectName, $projectDate, $projectContent, $projectType, $projectOrder, $isDeleted)
+    public function __construct()
     {
-        $this->name = $projectName;
-        $this->date = $projectDate;
-        $this->content = $projectContent;
-        $this->type = $projectType;
-        $this->order = $projectOrder;
-        $this->deleted = $isDeleted;
+        $this->db = (new Database())->connect();
     }
 
-    public function getName()
+    public function save()
     {
-        return $this->name;
-    }
-    public function getDate()
-    {
-        return $this->date;
-    }
-    public function getContent()
-    {
-        return $this->content;
-    }
-    public function getType()
-    {
-        return $this->type;
-    }
-    public function getOrder()
-    {
-        return $this->order;
-    }
-    public function getDeleted()
-    {
-        return $this->deleted;
+        try {
+            $req = "INSERT INTO projects (project_name,project_date,project_info,id_project_type,order,deleted) VALUES (?,?,?,?,?,?)";
+            $stmt = $this->db->prepare($req);
+            $stmt->execute([$this->name, $this->date, $this->content, $this->type, $this->order, $this->deleted]);
+            return $this->db->lastInsertId();
+        } catch (PDOException $e) {
+            throw new Exception("Unable to retrieve messages: " . $e->getMessage());
+        }
     }
 
-    public function setName($name)
+    public function getAll()
     {
-        $this->name = $name;
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM `projects`");
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            throw new Exception("Unable to retrieve messages: " . $e->getMessage());
+        }
     }
-    public function setDate($date)
+
+    public function getAllNotDeleted()
     {
-        $this->date = $date;
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM `projects` WHERE `deleted` = 0");
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            throw new Exception("Unable to retrieve messages: " . $e->getMessage());
+        }
     }
-    public function setContent($content)
+
+    public function getAllByOrder()
     {
-        $this->content = $content;
+        try {
+            $stmt = $this->db->prepare(
+                "SELECT * FROM `projects`
+            JOIN `project_type` ON project_type.id_project_type = projects.id_project_type
+            LEFT JOIN `images` ON images.id_project = projects.id_project
+            WHERE `projects`.`deleted` = 0 
+            ORDER BY `projects`.`order` ASC;"
+            );
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            throw new Exception("Unable to retrieve messages: " . $e->getMessage());
+        }
     }
-    public function setType($type)
+
+    public function getById($id)
     {
-        $this->type = $type;
-    }
-    public function setOrder($order)
-    {
-        $this->order = $order;
-    }
-    public function setDelete($delete)
-    {
-        $this->deleted = $delete;
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM `projects` WHERE `id_project` = ?");
+            $stmt->execute([$id]);
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            throw new Exception("Unable to retrieve message: " . $e->getMessage());
+        }
     }
 }

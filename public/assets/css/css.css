@@ -64,6 +64,9 @@ nav{
 .active {
     color: #ffffff !important; 
 }
+.nav-item a{
+    text-transform: uppercase;
+}
 /* NABAR */
 
 /* HOME */
@@ -202,8 +205,17 @@ footer a{
 .service-name{
     color: rgba(154, 154, 154, 0.989);
     text-align: left;
-    margin-left: 20px;
     cursor: pointer;
+}
+.service-name::after {
+    content: "  •  "; 
+    color: white; 
+    margin: 0 20px;
+
+}
+
+.service-name:last-child::after {
+    content: none; 
 }
 .service-name:hover{
     color: white;
@@ -310,6 +322,11 @@ textarea {
     z-index: 1;
   }
   
+  .lang-button-active {
+    color: white !important; 
+}
+
+
 
 
 @media only screen and (max-width: 600px) {
