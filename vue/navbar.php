@@ -46,12 +46,28 @@ $langQuery = 'lang=' . $lang;
                         <i class="fa-solid fa-language" id="languageIcon"></i>
                     </a>
 
+                    <?php
+                    $urlComponents = parse_url($_SERVER['REQUEST_URI']);
+                    $queryParams = [];
+                    if (isset($urlComponents['query'])) {
+                        parse_str($urlComponents['query'], $queryParams);
+                    }
+
+                    // Set the language parameters
+                    $queryParams['lang'] = 'en';
+                    // Rebuild the query string with the new language parameter
+                    $enUrl = $urlComponents['path'] . '?' . http_build_query($queryParams);
+
+                    $queryParams['lang'] = 'fr';
+                    $frUrl = $urlComponents['path'] . '?' . http_build_query($queryParams);
+                    ?>
+
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="?lang=en">EN</a></li>
+                        <li><a class="dropdown-item" href="<?= htmlspecialchars($enUrl); ?>">EN</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="?lang=fr">FR</a></li>
+                        <li><a class="dropdown-item" href="<?= htmlspecialchars($frUrl); ?>">FR</a></li>
                     </ul>
                 </li>
 

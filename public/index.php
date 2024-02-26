@@ -13,22 +13,28 @@ if (isset($_GET['lang'])) {
 $translations = require '../languages/' . $lang . '.php';
 
 require '../src/classes/Database.php';
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="<?= $lang; ?>">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://kit.fontawesome.com/0f0b5058e5.js" crossorigin="anonymous"></script>
+    <title><?= $translations['meta_title']; ?></title>
+    <!-- LINKS -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
     <link href="assets/hamburgers-master/dist/hamburgers.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/css.css" />
     <link rel="icon" href="assets/images/logo/FEL_logo-modified_black_small.png" />
+    <!-- Hreflang links for SEO -->
+    <link rel="alternate" hreflang="fr" href="http://yourwebsite.com/<?php echo $lang === 'fr' ? '' : '?lang=fr'; ?>" />
+    <link rel="alternate" hreflang="en" href="http://yourwebsite.com/<?php echo $lang === 'en' ? '' : '?lang=en'; ?>" />
+    <!-- SCRIPTS -->
+    <script src="https://kit.fontawesome.com/0f0b5058e5.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+
 </head>
 
 <body>

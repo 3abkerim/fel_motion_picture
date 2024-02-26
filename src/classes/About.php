@@ -24,12 +24,22 @@ class About
             throw new Exception("Unable to retrieve messages: " . $e->getMessage());
         }
     }
-
-    public function getAll()
+    public function getAll($lang)
     {
         try {
-            $stmt = $this->db->prepare("SELECT * FROM `about_us` ORDER BY `order` ASC");
-            $stmt->execute();
+            $stmt = $this->db->prepare("SELECT * FROM about_us ab LEFT JOIN about_us_translations abt ON ab.id_about_us = abt.id_about_us AND abt.lang_code = ?");
+            $stmt->execute([$lang]);
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            throw new Exception("Unable to retrieve messages: " . $e->getMessage());
+        }
+    }
+
+    public function getAllByOrder($lang)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM about_us ab LEFT JOIN about_us_translations abt ON ab.id_about_us = abt.id_about_us AND abt.lang_code = ? ORDER BY `order` ASC");
+            $stmt->execute([$lang]);
             return $stmt->fetchAll();
         } catch (PDOException $e) {
             throw new Exception("Unable to retrieve messages: " . $e->getMessage());

@@ -1,5 +1,6 @@
 <?php
 return [
+    'meta_title' => 'FEL Motion Picture - ',
     //navbar
     'home' => 'home',
     'projects' => 'projects',

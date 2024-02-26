@@ -3,7 +3,11 @@ require '../src/classes/Sponsor.php';
 $sponsors = new Sponsor();
 ?>
 <section class="container-fluid">
-    <video class="video-home" src="../public/assets/videos/EFL_logo_light.mp4" muted autoplay></video>
+    <video class="video-home" src="../public/assets/videos/EFL_logo_light.mp4" muted autoplay playsinline>
+        <source src="../public/assets/videos/EFL_logo_light.mp4" type="video/mp4">
+        <!-- Add more sources here if necessary -->
+        Your browser does not support the video tag.
+    </video>
 </section>
 
 <section class="container-fluid">

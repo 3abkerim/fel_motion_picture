@@ -10,7 +10,7 @@ $users = new User();
         <h2 class="title my-auto"><?= $translations['our philosophy']; ?></h2>
     </div>
     <?php
-    foreach ($abouts->getAll() as $about) {
+    foreach ($abouts->getAllByOrder($lang) as $about) {
     ?>
 
         <div class="title-philosophy"><?= $about['title']; ?></div>
