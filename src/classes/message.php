@@ -1,4 +1,5 @@
 <?php
+
 class Message
 {
     private $db;

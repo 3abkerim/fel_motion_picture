@@ -3,17 +3,9 @@ $langQuery = 'lang=' . $lang;
 ?>
 <nav class="navbar navbar-expand-lg">
     <div style="overflow:visible" class="container-fluid">
-        <a class="ms-3" href="#">
+        <a class="ms-3" href="../public/index.php">
             <img src="../public/assets/images/logo/FEL_logo.png" width="90" height="auto" alt="fel-motion-picture-logo">
         </a>
-
-        <!--
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
--->
-
         <button class="hamburger--elastic navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
@@ -53,9 +45,7 @@ $langQuery = 'lang=' . $lang;
                         parse_str($urlComponents['query'], $queryParams);
                     }
 
-                    // Set the language parameters
                     $queryParams['lang'] = 'en';
-                    // Rebuild the query string with the new language parameter
                     $enUrl = $urlComponents['path'] . '?' . http_build_query($queryParams);
 
                     $queryParams['lang'] = 'fr';
@@ -63,20 +53,37 @@ $langQuery = 'lang=' . $lang;
                     ?>
 
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="<?= htmlspecialchars($enUrl); ?>">EN</a></li>
+                        <li><a class="dropdown-item" href="<?= htmlspecialchars($enUrl); ?>">
+                                <div class="d-flex justify-content-between">
+                                    <div>EN</div>
+                                    <?php
+                                    $currentLang = $_GET['lang'] ?? '';
+                                    if ($currentLang == 'en') {
+                                        echo "<div><i class='fa-solid fa-check'></i></div>";
+                                    }
+                                    ?>
+
+                                </div>
+                            </a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="<?= htmlspecialchars($frUrl); ?>">FR</a></li>
+                        <li><a class="dropdown-item" href="<?= htmlspecialchars($frUrl); ?>">
+                                <div class="d-flex justify-content-between">
+                                    <div>FR</div>
+                                    <?php
+                                    $currentLang = $_GET['lang'] ?? '';
+                                    if ($currentLang == 'fr') {
+                                        echo "<div><i class='fa-solid fa-check'></i></div>";
+                                    }
+                                    ?>
+
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
-
             </ul>
-
         </div>
-
-
-
     </div>
-
 </nav>

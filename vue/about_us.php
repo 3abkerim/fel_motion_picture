@@ -43,7 +43,7 @@ $users = new User();
         <h2 class="title my-auto"><?= $translations['key people']; ?></h2>
     </div>
     <div class="row">
-        <?php $keyPeople = $users->getKeyPeople();
+        <?php $keyPeople = $users->getKeyPeople($lang);
         $total = count($keyPeople);
         foreach ($keyPeople as $indice => $user) { ?>
             <div class="<?= $total > 1 ?  'col-md-6' :  'col-12'; ?> founders">

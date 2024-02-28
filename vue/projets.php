@@ -2,7 +2,7 @@
 require '../src/classes/Project.php';
 $project = new Project();
 
-foreach ($project->getAllByOrder() as $indice => $project) {
+foreach ($project->getAllByOrder($lang, $lang) as $indice => $project) {
     if ($indice % 2 == 0) {
 ?>
         <section class="container-fluid min-vh-100">
@@ -24,9 +24,24 @@ foreach ($project->getAllByOrder() as $indice => $project) {
                 <div class="col-12 text-white text-uppercase">
                     <?php
                     $dateTime = new DateTime($project['project_date']);
-                    $formattedDate = $dateTime->format('F Y')
+                    $currentLang = $_GET['lang'] ?? '';
+                    if ($currentLang == 'fr') {
+                        $locale = 'fr_FR';
+                    } else {
+                        $locale = 'en_US';
+                    }
+                    $formatter = new IntlDateFormatter(
+                        $locale,
+                        IntlDateFormatter::LONG,
+                        IntlDateFormatter::NONE,
+                        new DateTimeZone('UTC'),
+                        IntlDateFormatter::GREGORIAN,
+                        'MMMM yyyy'
+                    );
+                    $formattedDate = $formatter->format($dateTime);
                     ?>
                     <h3 class="project-date"><?= $formattedDate ?></h3>
+
                 </div>
             </div>
         </section>
@@ -52,7 +67,21 @@ foreach ($project->getAllByOrder() as $indice => $project) {
                 <div class="col-12 text-black text-uppercase">
                     <?php
                     $dateTime = new DateTime($project['project_date']);
-                    $formattedDate = $dateTime->format('F Y')
+                    $currentLang = $_GET['lang'] ?? '';
+                    if ($currentLang == 'fr') {
+                        $locale = 'fr_FR';
+                    } else {
+                        $locale = 'en_US';
+                    }
+                    $formatter = new IntlDateFormatter(
+                        $locale,
+                        IntlDateFormatter::LONG,
+                        IntlDateFormatter::NONE,
+                        new DateTimeZone('UTC'),
+                        IntlDateFormatter::GREGORIAN,
+                        'MMMM yyyy'
+                    );
+                    $formattedDate = $formatter->format($dateTime);
                     ?>
                     <h3 class="project-date"><?= $formattedDate ?></h3>
                 </div>

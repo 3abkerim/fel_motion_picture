@@ -1,4 +1,5 @@
 <?php
+
 class Sponsor
 {
     private $db;

@@ -1,5 +1,4 @@
 <?php
-
 class User
 {
     private $db;
@@ -92,11 +91,25 @@ class User
         }
     }
 
-    public function getKeyPeople()
+    public function adminExists($mail)
     {
         try {
-            $stmt = $this->db->prepare("SELECT * FROM `users` LEFT JOIN `images` ON users.id_user = images.id_key_people WHERE users.key_people = 1");
-            $stmt->execute();
+            $stmt = $this->db->prepare("SELECT * FROM `users` WHERE `admin` = 1 and `email` = ?");
+            $stmt->execute([$mail]);
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            throw new Exception("Unable to retrieve messages: " . $e->getMessage());
+        }
+    }
+
+    public function getKeyPeople($lang)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM `users` 
+            LEFT JOIN `images` ON users.id_user = images.id_key_people 
+            LEFT JOIN `users_translations` ON users_translations.id_user = users.id_user
+            WHERE users.key_people = 1 AND users_translations.lang_code = ?");
+            $stmt->execute([$lang]);
             return $stmt->fetchAll();
         } catch (PDOException $e) {
             throw new Exception("Unable to retrieve messages: " . $e->getMessage());

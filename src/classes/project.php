@@ -37,33 +37,39 @@ class Project
         }
     }
 
-    public function getAllNotDeleted()
+    public function getAllNotDeleted($lang)
     {
         try {
-            $stmt = $this->db->prepare("SELECT * FROM `projects` WHERE `deleted` = 0");
-            $stmt->execute();
+            $stmt = $this->db->prepare("SELECT * 
+            FROM projects p 
+            LEFT JOIN projects_translations pt ON pt.id_project = p.id_project
+            WHERE p.deleted = 0 AND pt.lang_code = ?");
+            $stmt->execute([$lang]);
             return $stmt->fetchAll();
         } catch (PDOException $e) {
             throw new Exception("Unable to retrieve messages: " . $e->getMessage());
         }
     }
 
-    public function getAllByOrder()
+    public function getAllByOrder($lang)
     {
         try {
             $stmt = $this->db->prepare(
-                "SELECT * FROM `projects`
-            JOIN `project_type` ON project_type.id_project_type = projects.id_project_type
-            LEFT JOIN `images` ON images.id_project = projects.id_project
-            WHERE `projects`.`deleted` = 0 
-            ORDER BY `projects`.`order` ASC;"
+                "SELECT * FROM projects p
+                JOIN project_type pty ON pty.id_project_type = p.id_project_type
+                LEFT JOIN project_type_translations ptt ON ptt.id_project_type = p.id_project_type AND ptt.lang_code = ?
+                LEFT JOIN images i ON i.id_project = p.id_project
+                LEFT JOIN projects_translations pt ON pt.id_project = p.id_project AND pt.lang_code = ?
+                WHERE p.deleted = 0
+                ORDER BY p.order ASC;"
             );
-            $stmt->execute();
+            $stmt->execute([$lang, $lang]);
             return $stmt->fetchAll();
         } catch (PDOException $e) {
             throw new Exception("Unable to retrieve messages: " . $e->getMessage());
         }
     }
+
 
     public function getById($id)
     {

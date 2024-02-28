@@ -5,7 +5,7 @@
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom align-items-center">
         <!-- Left -->
         <div class="me-5 d-none d-lg-block verticalFooter">
-            <span>Rejoignez-nous sur les réseaux sociaux :</span>
+            <span><?= $translations['join us on social media']; ?> :</span>
         </div>
         <!-- Left -->
 
@@ -24,25 +24,25 @@
             <!-- Grid row -->
             <div class="row mt-3">
                 <!-- Grid column -->
-                <div class="col-md-3 mx-auto mb-4 d-none d-md-block">
+                <a target="_blank" href="../public/index.php" class="col-md-3 mx-auto mb-4 d-none d-md-block">
                     <img class="img-fluid" src="../public/assets/images/logo/FEL_logo.png" alt="" />
-                </div>
+                </a>
 
                 <!-- Grid column -->
                 <div class="col-md-4 offset-md-1 mx-auto mb-4">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">LIENS UTILES</h6>
+                    <h6 class="text-uppercase fw-bold mb-4"><?= $translations['useful links']; ?></h6>
                     <p>
-                        <a href="../public/index.php?page=30" class="">Crédits</a>
+                        <a href="../public/index.php?page=7" class=""><?= $translations['credits']; ?></a>
                     </p>
                     <p>
-                        <a href="../public/index.php?page=32" class="">Déclaration RGPD</a>
+                        <a href="../public/index.php?page=8" class=""><?= $translations['RGPD']; ?></a>
                     </p>
                     <p>
-                        <a href="../public/index.php?page=31" class="">Notre politique de cookies</a>
+                        <a href="../public/index.php?page=9" class=""><?= $translations['cookies']; ?></a>
                     </p>
                     <p>
-                        <a href="../public/index.php?page=20" class="">Mentions légales</a>
+                        <a href="../public/index.php?page=10" class=""><?= $translations['Terms and Conditions']; ?></a>
                     </p>
 
                 </div>
@@ -51,10 +51,10 @@
                 <!-- Grid column -->
                 <div class="col-md-4 mx-auto mb-md-0 mb-4">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <h6 class="text-uppercase fw-bold mb-4"><?= $translations['contact']; ?></h6>
                     <p>78 Avenue des Champs Elysées <br> 75008 Paris</p>
                     <p>
-                        <a href="../public/index.php?page=29" class="">Nous contacter</a>
+                        <a href="../public/index.php?page=29" class=""><?= $translations['contact us']; ?></a>
                     </p>
                 </div>
             </div>

@@ -1,0 +1,490 @@
+@font-face {
+  font-family: "quicksand";
+  src: url(../fonts/Quicksand-Regular.ttf);
+}
+@font-face {
+  font-family: "quicksandBold";
+  src: url(../fonts/Quicksand-Bold.ttf);
+}
+@font-face {
+  font-family: "quicksandLight";
+  src: url(../fonts/Quicksand-Light.ttf);
+}
+@font-face {
+  font-family: "quicksandMedium";
+  src: url(../fonts/Quicksand-Medium.ttf);
+}
+@font-face {
+  font-family: "quicksandSemiBold";
+  src: url(../fonts/Quicksand-SemiBold.ttf);
+}
+@font-face {
+  font-family: "roboto";
+  src: url("../fonts/Roboto/Roboto-Regular.ttf");
+}
+body {
+  background: rgb(248, 249, 250);
+  font-family: "roboto";
+}
+.navbiens {
+  z-index: 1;
+  position: sticky;
+  top: 70px;
+  background: rgb(248, 249, 250) !important;
+}
+
+/* .testRelative {
+  position: relative;
+  z-index: 0;
+} */
+.testRelative2 {
+  position: relative;
+  z-index: 1000;
+}
+
+.navBo {
+  font-size: 15px;
+  position: sticky;
+  top: 70px;
+}
+.navBo2 {
+  font-size: 15px;
+  position: sticky;
+  top: 0;
+}
+
+.navBtn {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+  background: rgb(248, 249, 250);
+  border-radius: 25px;
+  margin-top: 5px;
+}
+.navBtn:hover,
+.navBtn.active {
+  background: rgb(186, 187, 188);
+  color: white;
+}
+.navBtn img {
+  width: 20px;
+  height: auto;
+  margin-left: 10px;
+}
+.navBtn span {
+  vertical-align: middle;
+  margin-left: 10px;
+}
+.ParentSideBar a {
+  text-decoration: none;
+  color: black;
+}
+.conFluid {
+  padding-left: 0rem;
+  padding-right: 0rem;
+  overflow: hidden;
+}
+.titreBO {
+  margin-left: 15px;
+  font-family: "futura";
+}
+.titreBO img {
+  width: 50px;
+  height: auto;
+}
+#sidebar-nav {
+  width: 160px;
+}
+.ParentSideBar {
+  height: calc(100vh - 70px);
+  position: sticky;
+  top: 0;
+}
+.testUser {
+  color: black;
+  margin-left: 10px;
+}
+.testUser a {
+  color: black;
+}
+/* produits */
+
+.title {
+  font-size: 20px;
+  padding: 10px;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.095);
+}
+.tableau {
+  width: 100%;
+  max-height: 500px;
+  border-radius: 25px;
+  overflow-y: auto;
+  overflow-x: auto; /* makes horizontal scrollbar appear when needed */
+  display: block;
+  position: relative;
+  /* z-index: 0; */
+}
+
+.sticky-container {
+  position: sticky;
+  top: 0;
+  z-index: 1030; /* This can be adjusted as needed */
+  overflow: auto;
+}
+.imgTable {
+  height: 60px; /* Or any value you prefer */
+  width: auto;
+  object-fit: cover;
+}
+table tr td {
+  vertical-align: middle;
+  text-align: center;
+}
+.btns {
+  width: 20px;
+  height: auto;
+}
+.add {
+  text-decoration: none;
+  color: black;
+  vertical-align: middle;
+}
+.btnadd {
+  width: 18px;
+  height: auto;
+}
+.addParent {
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.titreGestion {
+  font-size: 25px;
+  text-align: center;
+}
+
+/********** gestion marques *****************/
+
+.tableau2 {
+  max-height: 100px;
+  border-radius: 25px;
+  overflow-y: auto;
+}
+
+/*********** IMAGES_PRODUIT ****************/
+
+.dump {
+  width: 30px;
+  height: auto;
+}
+.imgHeight {
+  height: 260px;
+  object-fit: contain;
+}
+.linePhotos {
+  height: 1px;
+  background: rgb(185, 166, 72);
+}
+
+/* .image-container {
+  position: relative;
+  display: inline-block;
+  margin: 10px; 
+} */
+
+.img-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.number {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  padding: 5px 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mainImage {
+  max-width: 100%;
+}
+
+.goldTitre {
+  height: 1px;
+  width: 50px;
+  background: black;
+  text-align: center;
+  margin: auto;
+}
+.btnblack {
+  background: black;
+  background-color: black;
+  color: white;
+  border: none;
+}
+.btnblack:hover {
+  background: rgb(75, 74, 74);
+  background-color: rgb(67, 65, 65);
+  color: white;
+}
+
+.supprimer {
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+.dump2 img {
+  width: 20px;
+  height: auto;
+}
+.btnModal {
+  height: 45px;
+  width: 70px;
+  color: white;
+  background: rgb(0, 0, 0);
+  border-radius: 25px;
+  border: none;
+}
+
+.modal-footer a {
+  color: white !important;
+  text-decoration: none !important;
+}
+.modal-footer a:hover {
+  color: white;
+}
+.btnModal:hover {
+  background: rgb(123, 123, 123);
+}
+
+.btnModal2 {
+  height: 45px;
+  width: 70px;
+  color: white;
+  background: rgb(187, 187, 187);
+  border-radius: 25px;
+  border: none;
+}
+
+.btnModal2:hover {
+  background: rgb(119, 119, 118);
+}
+
+/*********** IMAGES_CHATS ****************/
+
+.linePhotos {
+  height: 1px;
+  background: rgb(185, 166, 72);
+}
+
+.image-container {
+  cursor: grab;
+}
+
+.image-container:active {
+  cursor: grabbing;
+}
+
+.img-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.number {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  padding: 5px 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.mainImage {
+  max-width: 100%;
+}
+.caseDecede {
+  border: 0.5px solid black;
+  margin-top: 70px;
+  border-radius: 25px;
+}
+
+/******** CONNEXION **********/
+.testBO {
+  width: 500px;
+  margin: auto;
+}
+.connexionBO {
+  background: black;
+  color: white;
+  border-radius: 25px;
+  margin: auto;
+}
+.formBO {
+  margin: auto;
+}
+.logo img {
+  width: 100px;
+  height: auto;
+  margin: auto;
+}
+.btnConnexion {
+  background: rgb(185, 166, 72);
+  border: none;
+}
+.btnConnexion:hover {
+  background: rgb(118, 106, 45);
+}
+.btnConnexion:focus {
+  background: rgb(118, 106, 45);
+}
+
+/* OPDN */
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px; /* adjust to your needs */
+}
+
+/* Adoption */
+
+.demandes a {
+  text-decoration: none;
+  color: rgb(33, 141, 71);
+  font-family: "quicksandBold";
+  font-size: 20px;
+}
+.demandes a:hover {
+  color: yellowgreen;
+}
+
+.imgForm {
+  width: 30px;
+  height: auto;
+}
+
+.mainContact2 {
+  font-size: 14px;
+}
+
+.formAdoptBtn {
+  background: rgb(136, 188, 252);
+  color: white;
+  font-family: "quicksandBold";
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 30px;
+  width: 200px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.formAdoptBtnRed {
+  background: rgb(246, 92, 50);
+  color: white;
+  font-family: "quicksandBold";
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 30px;
+  width: 200px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.mainBtns {
+  text-decoration: none;
+}
+.btnAjout {
+  background: transparent;
+  border: none;
+}
+.btnAjout img {
+  width: 30px;
+  height: auto;
+}
+.titlesFA {
+  font-family: "quicksandBold";
+}
+.errorFa {
+  color: red;
+  margin-left: 10px;
+}
+.sucessFa {
+  color: rgb(63, 193, 23);
+  margin-left: 10px;
+}
+.refresh {
+  background: none;
+  border: none;
+}
+.modalFA a {
+  text-decoration: none;
+}
+.mainBtnFA {
+  background: none;
+  border: none;
+}
+.greenSuccess {
+  color: rgb(94, 176, 94);
+}
+.modalTest {
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  white-space: normal;
+}
+.titreTable {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+}
+/* .modal {
+  z-index: 3000 !important;
+} */
+
+.btnChatsBO {
+  border-radius: 25px;
+  background: rgb(148, 148, 148);
+  border: none;
+}
+
+/* Tableau de bord */
+
+.bubbles {
+  background: white;
+  height: 240px;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  border: solid 1px rgba(0, 0, 0, 0.209);
+  cursor: pointer;
+}
+.numberTB {
+  font-family: "quicksandBold";
+  font-size: 60px;
+}
+.enLigne {
+  color: green;
+  font-size: 30px;
+  font-family: "quicksandSemiBold";
+}
+.demandesTB {
+  color: rgb(128, 115, 0);
+  font-size: 30px;
+  font-family: "quicksandSemiBold";
+}
