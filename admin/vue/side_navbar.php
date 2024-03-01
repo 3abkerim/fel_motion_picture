@@ -7,14 +7,13 @@ $currentPage = $_GET['page'] ?? '';
     <img src="../public/assets/images/home.png" alt="">
     <span>Tableau de bord</span>
   </a>
-
   <a href="../public/index.php?page=2" class="border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '2' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
     <img src="../public/assets/images/pawprint.png" alt="" />
     <span>Projets</span>
   </a>
   <a href="../public/index.php?page=4" class=" border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '4' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
     <img src="../public/assets/images/blog.png" alt="" />
-    <span>Messagerie</span>
+    <span>Catégories</span>
   </a>
   <a href="../public/index.php?page=5" class=" border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '5' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
     <img src="../public/assets/images/calendar.png" alt="" />
@@ -31,6 +30,10 @@ $currentPage = $_GET['page'] ?? '';
   <a href="../public/index.php?page=8" class=" border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '8' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
     <img src="../public/assets/images/pet.png" alt="" />
     <span>Admins</span>
+  </a>
+  <a href="../public/index.php?page=9" class="border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '11' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
+    <img src="../public/assets/images/pawprint.png" alt="" />
+    <span>Messagerie</span>
   </a>
 
 

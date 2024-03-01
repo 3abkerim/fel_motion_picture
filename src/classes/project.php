@@ -2,25 +2,37 @@
 class Project
 {
     private $db;
-    private $name;
-    private $date;
-    private $content;
-    private $type;
-    private $order;
-    private $deleted;
 
     public function __construct()
     {
         $this->db = (new Database())->connect();
     }
 
-    public function save()
+    public function save1($date, $id)
     {
         try {
-            $req = "INSERT INTO projects (project_name,project_date,project_info,id_project_type,order,deleted) VALUES (?,?,?,?,?,?)";
+            $maxOrderQuery = $this->db->prepare('SELECT MAX(`order`) as max_order FROM projects');
+            $maxOrderQuery->execute();
+            $row = $maxOrderQuery->fetch();
+
+            $max_order = $row['max_order'] ?? 0;
+            $next_order = $max_order + 1;
+
+            $req = "INSERT INTO projects (project_date, id_project_type, `order`) VALUES (?, ?, ?)";
             $stmt = $this->db->prepare($req);
-            $stmt->execute([$this->name, $this->date, $this->content, $this->type, $this->order, $this->deleted]);
+            $stmt->execute([$date, $id, $next_order]);
             return $this->db->lastInsertId();
+        } catch (PDOException $e) {
+            throw new Exception("Unable to insert project: " . $e->getMessage());
+        }
+    }
+
+    public function save2($name, $info, $lang)
+    {
+        try {
+            $req = "INSERT INTO projects_translations (project_name,project_info,lang_code) VALUES (?,?,?)";
+            $stmt = $this->db->prepare($req);
+            $stmt->execute([$name, $info, $lang]);
         } catch (PDOException $e) {
             throw new Exception("Unable to retrieve messages: " . $e->getMessage());
         }
@@ -74,7 +86,7 @@ class Project
     public function getById($id)
     {
         try {
-            $stmt = $this->db->prepare("SELECT * FROM `projects` WHERE `id_project` = ?");
+            $stmt = $this->db->prepare("SELECT * FROM projects p LEFT JOIN projects_translations pt ON p.id_project = pt.id_project WHERE p.id_project = ? AND lang_code = 'fr'");
             $stmt->execute([$id]);
             return $stmt->fetch();
         } catch (PDOException $e) {

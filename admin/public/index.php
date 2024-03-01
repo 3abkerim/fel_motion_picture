@@ -38,11 +38,11 @@ require '../../src/classes/Database.php';
         <div class="col-lg-10 testRelative">
           <?php
           if ($_GET['page'] == 2) {
-            include '../vue/chats.php';
+            include '../vue/projets.php';
           } elseif ($_GET['page'] == 3) {
             include '../vue/tableau_de_bord.php';
           } elseif ($_GET['page'] == 4) {
-            include '../vue/articles.php';
+            include '../vue/categories.php';
           } elseif ($_GET['page'] == 5) {
             include '../vue/events.php';
           } elseif ($_GET['page'] == 6) {
@@ -55,6 +55,8 @@ require '../../src/classes/Database.php';
             include '../vue/familles_accueil.php';
           } elseif ($_GET['page'] == 10) {
             include '../vue/users.php';
+          } elseif ($_GET['page'] == 11) {
+            include '../vue/categories.php';
           }
           ?>
         </div>
