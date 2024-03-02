@@ -34,7 +34,7 @@ $projectById = $project->getById($id);
     </li>
     <?php if (isset($_GET['section']) && ($_GET['section'] === '3')) { ?>
         <li class="nav-item">
-            <a class="nav-link <?php echo (isset($_GET['section']) && $_GET['section'] === '3' ? ' active' : ''); ?>" aria-current="page" href="../public/index.php?page=2&section=3"><?= $projectById['']; ?></a>
+            <a class="nav-link <?php echo (isset($_GET['section']) && $_GET['section'] === '3' ? ' active' : ''); ?>" aria-current="page" href="../public/index.php?page=2&section=3"><?= $projectById['project_name']; ?></a>
         </li>
     <?php } ?>
     <?php if (isset($_GET['section']) && ($_GET['section'] === '4')) { ?>

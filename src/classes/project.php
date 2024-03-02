@@ -27,21 +27,21 @@ class Project
         }
     }
 
-    public function save2($name, $info, $lang)
+    public function save2($id, $name, $info, $lang)
     {
         try {
-            $req = "INSERT INTO projects_translations (project_name,project_info,lang_code) VALUES (?,?,?)";
+            $req = "INSERT INTO projects_translations (id_project,project_name,project_info,lang_code) VALUES (?,?,?,?)";
             $stmt = $this->db->prepare($req);
-            $stmt->execute([$name, $info, $lang]);
+            $stmt->execute([$id, $name, $info, $lang]);
         } catch (PDOException $e) {
             throw new Exception("Unable to retrieve messages: " . $e->getMessage());
         }
     }
 
-    public function getAll()
+    public function getAllFrench()
     {
         try {
-            $stmt = $this->db->prepare("SELECT * FROM `projects`");
+            $stmt = $this->db->prepare("SELECT * FROM projects p LEFT JOIN projects_translations pt ON p.id_project = pt.id_project WHERE lang_code = 'fr' ");
             $stmt->execute();
             return $stmt->fetchAll();
         } catch (PDOException $e) {
@@ -87,6 +87,39 @@ class Project
     {
         try {
             $stmt = $this->db->prepare("SELECT * FROM projects p LEFT JOIN projects_translations pt ON p.id_project = pt.id_project WHERE p.id_project = ? AND lang_code = 'fr'");
+            $stmt->execute([$id]);
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            throw new Exception("Unable to retrieve message: " . $e->getMessage());
+        }
+    }
+
+
+    public function getByIdEn($id)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT * 
+            FROM projects p 
+            LEFT JOIN projects_translations pt ON p.id_project = pt.id_project
+            LEFT JOIN project_type pty ON pty.id_project_type = p.id_project_type
+            JOIN project_type_translations ptyt ON pty.id_project_type = ptyt.id_project_type
+            WHERE p.id_project = ? AND pt.lang_code = 'en' AND ptyt.lang_code = 'en' ");
+            $stmt->execute([$id]);
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            throw new Exception("Unable to retrieve message: " . $e->getMessage());
+        }
+    }
+
+    public function getByIdFr($id)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT * 
+            FROM projects p 
+            LEFT JOIN projects_translations pt ON p.id_project = pt.id_project
+            LEFT JOIN project_type pty ON pty.id_project_type = p.id_project_type
+            JOIN project_type_translations ptyt ON pty.id_project_type = ptyt.id_project_type
+            WHERE p.id_project = ? AND pt.lang_code = 'fr' AND ptyt.lang_code = 'fr' ");
             $stmt->execute([$id]);
             return $stmt->fetch();
         } catch (PDOException $e) {
