@@ -5,7 +5,7 @@ $project = new Project();
 foreach ($project->getAllByOrder($lang, $lang) as $indice => $project) {
     if ($indice % 2 == 0) {
 ?>
-        <section class="container-fluid min-vh-100">
+        <section class="container-fluid">
             <div class="white-block mt-4">
                 <h2 class="title my-auto"><?= $project['project_name'] ?></h2>
             </div>
@@ -48,7 +48,7 @@ foreach ($project->getAllByOrder($lang, $lang) as $indice => $project) {
     <?php
     } else {
     ?>
-        <section class="container-fluid min-vh-100 bg-white">
+        <section class="container-fluid bg-white">
             <div class="black-block mt-4">
                 <h2 class="text-black text-center my-auto"><?= $project['project_name'] ?></h2>
             </div>
