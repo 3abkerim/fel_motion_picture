@@ -39,7 +39,7 @@ $projectById = $project->getById($id);
     <?php } ?>
     <?php if (isset($_GET['section']) && ($_GET['section'] === '4')) { ?>
         <li class="nav-item">
-            <a class="nav-link <?php echo (isset($_GET['section']) && $_GET['section'] === '4' ? ' active' : ''); ?>" aria-current="page" href="../public/index.php?page=2&section=4">Photos de <?php echo $chat['nom_chat']; ?></a>
+            <a class="nav-link <?php echo (isset($_GET['section']) && $_GET['section'] === '4' ? ' active' : ''); ?>" aria-current="page" href="../public/index.php?page=2&section=4">Photo de "<?= $projectById['project_name']; ?>"</a>
         </li>
     <?php } ?>
 </ul>

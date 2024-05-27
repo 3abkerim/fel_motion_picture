@@ -1,14 +1,14 @@
 <!-- Alert placeholder -->
 <div class="alert-placeholder">
-    <?php if (isset($_SESSION['success-delete-projet'])) : ?>
+    <?php if (isset($_SESSION['success-delete-project'])) : ?>
         <div class="alert alert-info mt-3">
-            <?= htmlspecialchars($_SESSION['success-delete-projet']); ?>
-            <?php unset($_SESSION['success-delete-projet']); ?>
+            <?= htmlspecialchars($_SESSION['success-delete-project']); ?>
+            <?php unset($_SESSION['success-delete-project']); ?>
         </div>
-    <?php elseif (isset($_SESSION['fail-delete-projet'])) : ?>
+    <?php elseif (isset($_SESSION['fail-delete-project'])) : ?>
         <div class="alert alert-warning mt-3">
-            <?= htmlspecialchars($_SESSION['fail-delete-projet']); ?>
-            <?php unset($_SESSION['fail-delete-projet']); ?>
+            <?= htmlspecialchars($_SESSION['fail-delete-project']); ?>
+            <?php unset($_SESSION['fail-delete-project']); ?>
         </div>
     <?php else : ?>
         <div class="alert mt-3 invisible">Placeholder</div>
@@ -18,21 +18,25 @@
 
 <div class="row">
     <div class="col-md-12 tableau mt-1 bg-light mx-auto">
-        <table id="articles-table" class="table table-hover bg-light mt-2">
+        <table id="projects-table" class="table table-hover bg-light mt-2 draggable-table" data-table="project">
             <thead class="titreTable bg-light text-center">
-                <tr class="">
+                <tr>
+                    <th></th>
                     <th>#</th>
                     <th>Titre</th>
                     <th>Action</th>
                     <th>Image</th>
                     <th>En ligne</th>
                 </tr>
+            </thead>
+            <tbody>
                 <?php
-                $projects = $project->getAllFrench();
+                $projects = $project->getAllFrenchND();
                 foreach ($projects as $indice => $pro) {
-                    $indice++
+                    $indice++;
                 ?>
-                    <tr>
+                    <tr class="draggable" data-id="<?= $pro['id_project']; ?>" draggable="true">
+                        <td><img class='btns dragBtns' src="../public/assets/images/drag.png" alt="drag button"></td>
                         <td><?= $indice; ?></td>
                         <td><?= $pro['project_name']; ?></td>
                         <td>
@@ -42,12 +46,12 @@
                             </div>
                         </td>
                         <td>
-                            <a class="p-2" href="../public/index.php?page=4&section=4&id=<?= $pro['id_project']; ?>"><img class="btns" src="../public/assets/images/image.png" alt="" /></a>
+                            <a class="p-2" href="../public/index.php?page=2&section=4&id=<?= $pro['id_project']; ?>"><img class="btns" src="../public/assets/images/image.png" alt="" /></a>
                         </td>
                         <td class="text-center">
                             <div class="d-flex justify-content-center">
                                 <div class="form-check form-switch mx-auto">
-                                    <input class="form-check-input" data-type="projet" type="checkbox" role="switch" id="flexSwitchCheckDefault_<?= $pro['id_project']; ?>" data-id-article="<?= $pro['id_project']; ?>" <?= $pro['online'] == 1 ? 'checked' : ''; ?>>
+                                    <input class="form-check-input" data-type="project" type="checkbox" role="switch" id="flexSwitchCheckDefault_<?= $pro['id_project']; ?>" data-id="<?= $pro['id_project']; ?>" <?= $pro['online'] == 1 ? 'checked' : ''; ?>>
                                 </div>
                             </div>
                         </td>
@@ -66,19 +70,14 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">non</button>
-                                    <a class="btn btn-info" href="../controller/traitement_supprimer_projet.php?id=<?= $pro['id_project']; ?>">oui</a>
+                                    <a class="btn btn-info" href="../controlleur/traitement_supprimer_projet.php?id=<?= $pro['id_project']; ?>">oui</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- MODAL -->
-
                 <?php } ?>
-            </thead>
-
-            <tbody>
             </tbody>
-
         </table>
     </div>
 </div>
