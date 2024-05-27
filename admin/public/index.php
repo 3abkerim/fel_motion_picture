@@ -44,19 +44,7 @@ require '../../src/classes/Database.php';
           } elseif ($_GET['page'] == 4) {
             include '../vue/categories.php';
           } elseif ($_GET['page'] == 5) {
-            include '../vue/events.php';
-          } elseif ($_GET['page'] == 6) {
-            include '../vue/opdn.php';
-          } elseif ($_GET['page'] == 7) {
-            include '../vue/boutique.php';
-          } elseif ($_GET['page'] == 8) {
-            include '../vue/adoption.php';
-          } elseif ($_GET['page'] == 9) {
-            include '../vue/familles_accueil.php';
-          } elseif ($_GET['page'] == 10) {
-            include '../vue/users.php';
-          } elseif ($_GET['page'] == 11) {
-            include '../vue/categories.php';
+            include '../vue/services.php';
           }
           ?>
         </div>
