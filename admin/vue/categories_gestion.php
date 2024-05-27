@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">non</button>
-                                    <a class="btn btn-info" href="../controlleur/traitement_supprimer_categorie.php?id=<?= $cat['id_project_type']; ?>">oui</a>
+                                    <a class="btn btn-info" href="../controlleur/traitement_supprimer.php?id=<?= $cat['id_project_type']; ?>&page=4">oui</a>
                                 </div>
                             </div>
                         </div>
