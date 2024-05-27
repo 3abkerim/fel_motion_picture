@@ -66,17 +66,48 @@ class Service
         }
     }
 
-
-
-
-    public function getById($id)
+    public function getAllByOrderND($lang)
     {
         try {
-            $stmt = $this->db->prepare("SELECT * FROM `service` WHERE `id_service` = ?");
-            $stmt->execute([$id]);
-            return $stmt->fetch();
+            $stmt = $this->db->prepare("
+                SELECT s.*, st.titre_service, st.info_service 
+                FROM services s 
+                LEFT JOIN services_translations st ON s.id_service = st.id_service AND st.lang_code = ? 
+                WHERE s.deleted = 0 
+                ORDER BY s.`order`
+            ");
+            $stmt->execute([$lang]);
+            return $stmt->fetchAll();
         } catch (PDOException $e) {
-            throw new Exception("Unable to retrieve message: " . $e->getMessage());
+            throw new Exception("Unable to retrieve ordered services: " . $e->getMessage());
         }
+    }
+
+
+    public function getByIdAndLang($id, $lang)
+    {
+        try {
+            $req = "SELECT * FROM services s LEFT JOIN services_translations st on s.id_service = st.id_service WHERE s.id_service = ? and st.lang_code = ?";
+            $stmt = $this->db->prepare($req);
+            $stmt->execute([$id, $lang]);
+            $result = $stmt->fetch();
+            return $result;
+        } catch (PDOException $e) {
+            throw new Exception("Unable to get project_type: " . $e->getMessage());
+        }
+    }
+
+    public function updateOrder($data) {
+        foreach ($data as $item) {
+            $query = "UPDATE services SET `order` = :order WHERE id_service = :id";
+            $statement = $this->db->prepare($query);
+            $statement->bindValue(':order', $item['order'], PDO::PARAM_INT);
+            $statement->bindValue(':id', $item['id'], PDO::PARAM_INT);
+
+            if (!$statement->execute()) {
+                throw new Exception("Error updating item with ID: " . $item['id']);
+            }
+        }
+        return "Order updated successfully.";
     }
 }
