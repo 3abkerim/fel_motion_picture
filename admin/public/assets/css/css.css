@@ -183,10 +183,6 @@ table tr td {
   height: 260px;
   object-fit: contain;
 }
-.linePhotos {
-  height: 1px;
-  background: rgb(185, 166, 72);
-}
 
 /* .image-container {
   position: relative;
@@ -491,4 +487,16 @@ table tr td {
 
 .invisible {
   visibility: hidden;
+}
+.img-edit {
+  width: 300px;
+  height: auto;
+}
+
+.dragBtns {
+  cursor: grab;
+}
+
+.dragging {
+  cursor: grabbing;
 }
