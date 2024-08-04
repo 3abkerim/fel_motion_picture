@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-require '../../src/classes/Categorie.php';
-require '../../src/classes/Database.php';
+require '../../../src/classes/Categorie.php';
+require '../../../src/classes/Database.php';
 
 $categorie = new Categorie();
 
@@ -19,9 +19,9 @@ if (isset($_POST['frCateg'], $_POST['enCateg']) && !empty($_POST['frCateg']) && 
         $_SESSION['fail-add-categ'] = 'La catégorie n\'a pas été ajoutée correctement';
         throw new Exception("Unable to add categories: " . $e->getMessage());
     }
-    header('Location: ../public/index.php?page=4');
+    header('Location: ../../public/index.php?page=4');
     exit();
 } else {
     $_SESSION['fail-add-categ'] = 'La catégorie n\'a pas été ajoutée correctement';
-    header('Location: ../public/index.php?page=4');
+    header('Location: ../../public/index.php?page=4');
 }

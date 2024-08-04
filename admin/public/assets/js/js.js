@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const projectId = target.dataset.id;
       const publieValue = target.checked ? 1 : 0;
 
-      fetch("../controlleur/traitement_projet_enLigne.php", {
+      fetch("../controller/project/traitement_projet_enLigne.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Updated order data:", orderData);
 
-    fetch("../controlleur/update_order.php", {
+    fetch("../controller/update_order.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

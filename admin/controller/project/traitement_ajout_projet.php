@@ -1,8 +1,8 @@
 <?php
-
+require_once('../../../config.php');
 session_start();
-require '../../src/classes/Project.php';
-require '../../src/classes/Database.php';
+require CLASSES_PATH.'/Project.php';
+require CLASSES_PATH.'/Database.php';
 
 $project = new Project();
 
@@ -28,19 +28,19 @@ if ($isValid) {
         $id = $project->save1($date, $idCateg);
         $project->save2($id, $enName, $enContent, 'en');
         $project->save2($id, $frName, $frContent, 'fr');
-        $_SESSION['success-add-projet'] = 'Le projet a été ajouté correctement';
-        header('Location: ../public/index.php?page=2');
+        $_SESSION['success-add-project'] = 'Le project a été ajouté correctement';
+        header('Location: ../../public/index.php?page=2');
         exit();
     } catch (Exception $e) {
-        $_SESSION['fail-add-projet'] = 'Le projet n\'a pas été ajouté correctement';
+        $_SESSION['fail-add-project'] = 'Le project n\'a pas été ajouté correctement';
         $_SESSION['form_data'] = $_POST;
         session_write_close();
-        header('Location: ../public/index.php?page=2');
+        header('Location: ../../public/index.php?page=2');
         throw new Exception("Unable to add project: " . $e->getMessage());
     }
 } else {
-    $_SESSION['fail-add-projet'] = 'Veuillez remplir tous les données';
+    $_SESSION['fail-add-project'] = 'Veuillez remplir tous les données';
     $_SESSION['form_data'] = $_POST;
     session_write_close();
-    header('Location: ../public/index.php?page=2');
+    header('Location: ../../public/index.php?page=2');
 }

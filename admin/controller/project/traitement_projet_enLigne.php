@@ -1,6 +1,6 @@
 <?php
-require '../../src/classes/Project.php';
-require '../../src/classes/Database.php';
+require '../../../src/classes/Project.php';
+require '../../../src/classes/Database.php';
 
 if (isset($_POST['id']) && isset($_POST['publie'])) {
     $id = $_POST['id'];

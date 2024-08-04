@@ -1,7 +1,7 @@
 <?php
 session_start();
-require '../../src/classes/Categorie.php';
-require '../../src/classes/Database.php';
+require '../../../src/classes/Categorie.php';
+require '../../../src/classes/Database.php';
 
 $categorie = new Categorie();
 $id = htmlspecialchars($_POST['idCateg']);
@@ -18,9 +18,9 @@ if (isset($_POST['frCateg'], $_POST['enCateg']) && !empty($_POST['frCateg']) && 
         $_SESSION['fail-edit-categ'] = 'La catégorie n\'a pas été modifiée correctement';
         throw new Exception("Unable to add categories: " . $e->getMessage());
     }
-    header('Location: ../public/index.php?page=4&section=3&id=' . $id);
+    header('Location: ../../public/index.php?page=4&section=3&id=' . $id);
     exit();
 } else {
     $_SESSION['fail-edit-categ'] = 'La catégorie n\'a pas été modifiée correctement';
-    header('Location: ../public/index.php?page=4&section=3&id=' . $id);
+    header('Location: ../../public/index.php?page=4&section=3&id=' . $id);
 }

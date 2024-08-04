@@ -22,7 +22,7 @@ $projetEn = $project->getByIdEn($id, 'en');
 </div>
 <!-- Alert placeholder -->
 
-<form action="../controlleur/traitement_edit_projet.php" method="post">
+<form action="../controlleur/project/traitement_edit_projet.php" method="post">
     <div class="container">
         <div class="row mt-1">
             <div class="col-md-6">

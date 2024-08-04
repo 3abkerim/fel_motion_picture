@@ -24,14 +24,14 @@ $categorietById = $categorie->getByIdAndLang($id, 'fr');
 
 <ul class="nav nav-tabs navbiens mt-3">
     <li class="nav-item">
-        <a class="nav-link <?php echo (!isset($_GET['section']) ? ' active' : ''); ?>" aria-current="page" href="../public/index.php?page=4">Saisie</a>
+        <a class="nav-link <?php echo (!isset($_GET['section']) ? ' active' : ''); ?>" aria-current="page" href="../../public/index.php?page=4">Saisie</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link <?php echo (isset($_GET['section']) && $_GET['section'] === '2' ? ' active' : ''); ?>" aria-current="page" href="../public/index.php?page=4&section=2">Gestion</a>
+        <a class="nav-link <?php echo (isset($_GET['section']) && $_GET['section'] === '2' ? ' active' : ''); ?>" aria-current="page" href="../../public/index.php?page=4&section=2">Gestion</a>
     </li>
     <?php if (isset($_GET['section']) && ($_GET['section'] === '3')) { ?>
         <li class="nav-item">
-            <a class="nav-link <?php echo (isset($_GET['section']) && $_GET['section'] === '3' ? ' active' : ''); ?>" aria-current="page" href="../public/index.php?page=4&section=3"><?= $categorietById['project_type']; ?></a>
+            <a class="nav-link <?php echo (isset($_GET['section']) && $_GET['section'] === '3' ? ' active' : ''); ?>" aria-current="page" href="../../public/index.php?page=4&section=3"><?= $categorietById['project_type']; ?></a>
         </li>
     <?php } ?>
 </ul>

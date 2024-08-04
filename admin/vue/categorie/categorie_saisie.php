@@ -18,7 +18,7 @@
 
 
 <!-- Form add categorie -->
-<form action="../controlleur/traitement_ajout_categ.php" method="post">
+<form action="../../controller/categorie/traitement_ajout_categ.php" method="post">
     <div class="container">
         <div class="row mt-2">
             <div class="col-md-6">

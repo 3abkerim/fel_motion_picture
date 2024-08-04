@@ -34,9 +34,9 @@
                         <td><?= $indice; ?></td>
                         <td><?= $cat['project_type']; ?></td>
                         <td>
-                            <a class="p-2" href="../public/index.php?page=4&section=3&id=<?= $cat['id_project_type']; ?>"><img class="btns" src="../public/assets/images/edit.png" alt="edit" /></a>
+                            <a class="p-2" href="../../public/index.php?page=4&section=3&id=<?= $cat['id_project_type']; ?>"><img class="btns" src="../../public/assets/images/edit.png" alt="edit" /></a>
                             <div class="supprimer">
-                                <div class="dump2" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $cat['id_project_type']; ?>"> <img src="../public/assets/images/dump.png" alt="delete"> </div>
+                                <div class="dump2" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $cat['id_project_type']; ?>"> <img src="../../public/assets/images/dump.png" alt="delete"> </div>
                             </div>
                         </td>
                     </tr>
@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">non</button>
-                                    <a class="btn btn-info" href="../controlleur/traitement_supprimer.php?id=<?= $cat['id_project_type']; ?>&page=4">oui</a>
+                                    <a class="btn btn-info" href="../controlleur/traitement_supprimer_categ.php?id=<?= $cat['id_project_type']; ?>&page=4">oui</a>
                                 </div>
                             </div>
                         </div>

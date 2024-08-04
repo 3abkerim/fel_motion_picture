@@ -22,7 +22,7 @@ $categorieEn = $categorie->getByIdAndLang($id, 'en');
 </div>
 <!-- Alert placeholder -->
 
-<form action="../controlleur/traitement_edit_categ.php" method="post">
+<form action="../../controller/categorie/traitement_edit_categ.php" method="post">
     <div class="container">
         <div class="row mt-1">
             <div class="col-md-6">

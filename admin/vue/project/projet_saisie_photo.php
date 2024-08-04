@@ -28,7 +28,7 @@ $image = $project->getImage($id);
 
 
 <div class="text-center">
-    <form method="post" action="../controlleur/traitement_img_projet.php" enctype="multipart/form-data" class="mt-5">
+    <form method="post" action="../controlleur/project/traitement_img_projet.php" enctype="multipart/form-data" class="mt-5">
         <div class="mb-3 row">
             <label for="exampleFormControlInput1" class="col-lg-2 col-form-label">Ajouter des images</label>
             <div class="col-lg-4">
@@ -58,7 +58,7 @@ $image = $project->getImage($id);
                 <img class="img-fluid img-edit" src="<?php echo $absoluteImagePath; ?>" alt="" />
                 <div class="d-flex justify-content-center mt-2 col-lg-12">
                     <a href="../controlleur/traitement_delete_img_projet.php?id=<?php echo $id; ?>">
-                        <img class="dump" src="../public/assets/images/dump.png" alt="" />
+                        <img class="dump" src="../../public/assets/images/dump.png" alt="" />
                     </a>
                 </div>
         <?php

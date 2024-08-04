@@ -6,45 +6,44 @@ unset($_SESSION['form_data']);
 
 <!-- Alert placeholder -->
 <div class="alert-placeholder">
-    <?php if (isset($_SESSION['success-add-projet'])) : ?>
+    <?php if (isset($_SESSION['success-add-project'])) : ?>
         <div class="alert alert-info mt-3">
-            <?= htmlspecialchars($_SESSION['success-add-projet']); ?>
-            <?php unset($_SESSION['success-add-projet']); ?>
+            <?= htmlspecialchars($_SESSION['success-add-project']); ?>
+            <?php unset($_SESSION['success-add-project']); ?>
         </div>
-    <?php elseif (isset($_SESSION['fail-add-projet'])) : ?>
+    <?php elseif (isset($_SESSION['fail-add-project'])) : ?>
         <div class="alert alert-warning mt-3">
-            <?= htmlspecialchars($_SESSION['fail-add-projet']); ?>
-            <?php unset($_SESSION['fail-add-projet']); ?>
+            <?= htmlspecialchars($_SESSION['fail-add-project']); ?>
+            <?php unset($_SESSION['fail-add-project']); ?>
         </div>
     <?php else : ?>
         <div class="alert mt-3 invisible">Placeholder</div>
     <?php endif; ?>
 </div>
 <!-- Alert placeholder -->
-
-
-<form action="../controlleur/traitement_ajout_projet.php" method="post">
+<!-- ../controller/project/traitement_ajout_projet.php -->
+<form action="<?= ADMIN_CONTROLLERS_URL ?>/project/traitement_ajout_projet.php" method="post">
     <div class="container">
         <div class="row mt-1">
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Project Name *</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" name="enName" required value="<?php echo (isset($form_data['enName']) ? $form_data['enName'] : ''); ?>">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" name="enName" required value="<?php echo (isset($form_data['enName']) ?? $form_data['enName']); ?>">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Content *</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="enContent" required><?php echo (isset($form_data['enContent']) ? $form_data['enContent'] : ''); ?></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="enContent" required><?php echo (isset($form_data['enContent']) ?? $form_data['enContent']); ?></textarea>
                 </div>
 
             </div>
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Nom du projet *</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="frName" placeholder="" required value=<?php echo (isset($form_data['frName']) ? $form_data['frName'] : ''); ?>>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="frName" placeholder="" required value=<?php echo (isset($form_data['frName']) ?? $form_data['frName']); ?>>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Contenu *</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="frContent" required><?php echo (isset($form_data['frContent']) ? $form_data['frContent'] : ''); ?></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="frContent" required><?php echo (isset($form_data['frContent']) ?? $form_data['frContent']); ?></textarea>
                 </div>
             </div>
         </div>
@@ -53,7 +52,7 @@ unset($_SESSION['form_data']);
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Date du projet *</label>
-                    <input type="date" class="form-control" id="exampleFormControlInput1" name="date" placeholder="" required value="<?php echo (isset($form_data['date']) ? $form_data['date'] : ''); ?>">
+                    <input type="date" class="form-control" id="exampleFormControlInput1" name="date" placeholder="" required value="<?php echo (isset($form_data['date']) ?? $form_data['date']); ?>">
                 </div>
             </div>
             <div class="col-md-6">
