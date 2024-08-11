@@ -1,8 +1,8 @@
 <?php
+require_once('../../../config.php');
 session_start();
-
-require '../../../src/classes/Project.php';
-require '../../../src/classes/Database.php';
+require CLASSES_PATH.'/Project.php';
+require CLASSES_PATH.'/Database.php';
 
 $project = new Project();
 

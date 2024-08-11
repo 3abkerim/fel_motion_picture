@@ -40,13 +40,13 @@
                         <td><?= $indice; ?></td>
                         <td><?= $pro['project_name']; ?></td>
                         <td>
-                            <a class="p-2" href="../public/index.php?page=2&section=3&id=<?= $pro['id_project']; ?>"><img class="btns" src="<?= ADMIN_ASSETS_URL ?>/images/edit.png" alt="edit" /></a>
+                            <a class="p-2" href="<?= ADMIN_INDEX_URL ?>?page=2&section=3&id=<?= $pro['id_project']; ?>"><img class="btns" src="<?= ADMIN_ASSETS_URL ?>/images/edit.png" alt="edit" /></a>
                             <div class="supprimer">
                                 <div class="dump2" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $pro['id_project']; ?>"> <img src="<?= ADMIN_ASSETS_URL ?>/images/dump.png" alt="delete"> </div>
                             </div>
                         </td>
                         <td>
-                            <a class="p-2" href="../public/index.php?page=2&section=4&id=<?= $pro['id_project']; ?>"><img class="btns" src="<?= ADMIN_ASSETS_URL ?>/images/image.png" alt="" /></a>
+                            <a class="p-2" href="<?= ADMIN_INDEX_URL ?>?page=2&section=4&id=<?= $pro['id_project']; ?>"><img class="btns" src="<?= ADMIN_ASSETS_URL ?>/images/image.png" alt="" /></a>
                         </td>
                         <td class="text-center">
                             <div class="d-flex justify-content-center">
