@@ -1,10 +1,19 @@
 <?php
-require '../../src/classes/Service.php';
+require CLASSES_PATH . '/Service.php';
 
-// if (!isset($_SESSION[''])) {
-//     header('Location:../public/index.php?');
-//     exit();
-// }
+$page = 5;
+$sectionSaisie = 1;
+$sectionGestion = 2;
+$sectionServiceFiche = 3;
+
+$saisieUrl = sprintf('%s/index.php?page=%d', ADMIN_PUBLIC_URL, $page);
+$gestionUrl = sprintf('%s/index.php?page=%d&section=%d', ADMIN_PUBLIC_URL, $page, $sectionGestion);
+$serviceFicheUrl = sprintf('%s/index.php?page=%d&section=%d', ADMIN_PUBLIC_URL, $page, $sectionServiceFiche);
+
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+$service = new Service;
+$serviceFr = $service->getByIdAndLang($id, 'fr');
+$serviceEn = $service->getByIdAndLang($id, 'en');// if (!isset($_SESSION[''])) {
 ?>
 <div class="row">
     <div class="col-12">
@@ -14,39 +23,25 @@ require '../../src/classes/Service.php';
     </div>
 </div>
 
-<?php
-$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
-$service = new Service;
-$serviceFr = $service->getByIdAndLang($id, 'fr');
-$serviceEn = $service->getByIdAndLang($id, 'en');
-?>
-
-
-
 <ul class="nav nav-tabs navbiens mt-3">
     <li class="nav-item">
-        <a class="nav-link <?php echo (!isset($_GET['section']) ? ' active' : ''); ?>" aria-current="page" href="../../public/index.php?page=5">Saisie</a>
+        <a class="nav-link <?= (!isset($_GET['section']) ? 'active' : ''); ?>" aria-current="page" href="<?= $saisieUrl; ?>">Saisie</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link <?php echo (isset($_GET['section']) && $_GET['section'] === '2' ? ' active' : ''); ?>" aria-current="page" href="../../public/index.php?page=5&section=2">Gestion</a>
+        <a class="nav-link <?= (isset($_GET['section']) && $_GET['section'] == $sectionGestion ? 'active' : ''); ?>" aria-current="page" href="<?= $gestionUrl; ?>">Gestion</a>
     </li>
-    <?php if (isset($_GET['section']) && ($_GET['section'] === '3')) { ?>
+    <?php if (isset($_GET['section']) && $_GET['section'] == $sectionServiceFiche) { ?>
         <li class="nav-item">
-            <a class="nav-link <?php echo (isset($_GET['section']) && $_GET['section'] === '3' ? ' active' : ''); ?>" aria-current="page" href="../../public/index.php?page=5&section=3"><?= $serviceFr['titre_service']; ?></a>
+            <a class="nav-link <?= ($_GET['section'] == $sectionServiceFiche ? 'active' : ''); ?>" aria-current="page" href="<?= $serviceFicheUrl; ?>"><?= htmlspecialchars($serviceFr['titre_service']); ?></a>
         </li>
     <?php } ?>
 </ul>
 
 <?php
 if (!isset($_GET['section'])) {
-    include('../vue/service_saisie.php');
-} else {
-    if ($_GET['section'] == 2) {
-        include('../vue/services_gestion.php');
-    }
-    if ($_GET['section'] == 3) {
-        include('../vue/service_fiche.php');
-    }
+    include('service_saisie.php');
+} elseif ($_GET['section'] == $sectionGestion) {
+    include('services_gestion.php');
+} elseif ($_GET['section'] == $sectionServiceFiche) {
+    include('service_fiche.php');
 }
-
-?>

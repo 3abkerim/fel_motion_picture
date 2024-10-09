@@ -29,18 +29,18 @@
             </thead>
             <tbody>
             <?php
-                $services = $service->getAllByOrderND(fr);
+                $services = $service->getAllByOrderND("fr");
                 foreach ($services as $indice => $ser) {
                     $indice++
                 ?>
                     <tr class="draggable" data-id="<?= $ser['id_service']; ?>" draggable="true">
-                        <td><img class='btns dragBtns' src="../../public/assets/images/drag.png" alt="drag button"></td>
+                        <td><img class='btns dragBtns' src="<?= ADMIN_ASSETS_URL ?>/images/drag.png" alt="drag button"></td>
                         <td><?= $indice; ?></td>
                         <td><?= $ser['titre_service']; ?></td>
                         <td>
-                            <a class="p-2" href="../../public/index.php?page=5&section=3&id=<?= $ser['id_service']; ?>"><img class="btns" src="../../public/assets/images/edit.png" alt="edit" /></a>
+                            <a class="p-2" href="<?= ADMIN_INDEX_URL ?>?page=5&section=3&id=<?= $ser['id_service']; ?>"><img class="btns" src="<?= ADMIN_ASSETS_URL ?>/images/edit.png" alt="edit" /></a>
                             <div class="supprimer">
-                                <div class="dump2" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $ser['id_service']; ?>"> <img src="../../public/assets/images/dump.png" alt="delete"> </div>
+                                <div class="dump2" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $ser['id_service']; ?>"> <img src="<?= ADMIN_ASSETS_URL ?>/images/dump.png" alt="delete"> </div>
                             </div>
                         </td>
                     </tr>
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">non</button>
-                                    <a class="btn btn-info" href="../controlleur/traitement_supprimer_service.php?id=<?= $ser['id_service']; ?>">oui</a>
+                                    <a class="btn btn-info" href="<?= ADMIN_CONTROLLERS_URL ?>/service/traitement_supprimer_service.php?id=<?= $ser['id_service']; ?>">oui</a>
                                 </div>
                             </div>
                         </div>

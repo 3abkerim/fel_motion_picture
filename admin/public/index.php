@@ -58,7 +58,7 @@ const CSS = ADMIN_ASSETS_URL . '/css/css.css';
     } else { ?>
         <div class="row">
             <div class="col-12">
-                <?php include ADMIN_VUE_PATH . '/connexion.php'; ?>
+                <?php include ADMIN_VUE_PATH . '/log_in.php'; ?>
             </div>
         </div>
         <?php

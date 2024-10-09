@@ -18,7 +18,7 @@
 
 
 <!-- Form add categorie -->
-<form action="../../controller/categorie/traitement_ajout_categ.php" method="post">
+<form action="<?= ADMIN_CONTROLLERS_URL ?>/categorie/traitement_ajout_categ.php" method="post">
     <div class="container">
         <div class="row mt-2">
             <div class="col-md-6">
@@ -29,7 +29,7 @@
             </div>
             <div class="col-md-6">
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Nom du catégorie *</label>
+                    <label for="exampleFormControlInput1" class="form-label">Nom de catégorie *</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" name="frCateg" required>
                 </div>
 

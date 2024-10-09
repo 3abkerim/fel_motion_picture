@@ -52,7 +52,6 @@ class Project
         }
     }
 
-
     public function update2($name, $info, $project, $lang)
     {
         try {

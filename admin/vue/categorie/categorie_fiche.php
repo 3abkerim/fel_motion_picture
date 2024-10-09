@@ -22,19 +22,19 @@ $categorieEn = $categorie->getByIdAndLang($id, 'en');
 </div>
 <!-- Alert placeholder -->
 
-<form action="../../controller/categorie/traitement_edit_categ.php" method="post">
+<form action="<?= ADMIN_CONTROLLERS_URL ?>/categorie/traitement_edit_categ.php" method="post">
     <div class="container">
         <div class="row mt-1">
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Category name *</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="enCateg" placeholder="" value="<?= $categorieEn['project_type']; ?>" required>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="enCateg" value="<?= $categorieEn['project_type']; ?>" required>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Nom du catégorie *</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="frCateg" placeholder="" value="<?= $categorieFr['project_type']; ?>" required>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="frCateg" value="<?= $categorieFr['project_type']; ?>" required>
                 </div>
             </div>
         </div>

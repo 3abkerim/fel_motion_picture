@@ -18,7 +18,7 @@
 
 
 <!-- Form add service -->
-<form action="../controlleur/traitement_ajout_service.php" method="post">
+<form action="<?= ADMIN_CONTROLLERS_URL ?>/service/traitement_ajout_service.php" method="post">
     <div class="container">
         <div class="row mt-2">
             <div class="col-md-6">

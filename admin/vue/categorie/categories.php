@@ -1,5 +1,5 @@
 <?php
-require '../../src/classes/Categorie.php';
+require CLASSES_PATH . '/Categorie.php';
 
 // if (!isset($_SESSION[''])) {
 //     header('Location:../public/index.php?');
@@ -24,27 +24,27 @@ $categorietById = $categorie->getByIdAndLang($id, 'fr');
 
 <ul class="nav nav-tabs navbiens mt-3">
     <li class="nav-item">
-        <a class="nav-link <?php echo (!isset($_GET['section']) ? ' active' : ''); ?>" aria-current="page" href="../../public/index.php?page=4">Saisie</a>
+        <a class="nav-link <?php echo (!isset($_GET['section']) ? ' active' : ''); ?>" aria-current="page" href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=4">Saisie</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link <?php echo (isset($_GET['section']) && $_GET['section'] === '2' ? ' active' : ''); ?>" aria-current="page" href="../../public/index.php?page=4&section=2">Gestion</a>
+        <a class="nav-link <?php echo (isset($_GET['section']) && $_GET['section'] === '2' ? ' active' : ''); ?>" aria-current="page" href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=4&section=2">Gestion</a>
     </li>
     <?php if (isset($_GET['section']) && ($_GET['section'] === '3')) { ?>
         <li class="nav-item">
-            <a class="nav-link <?php echo (isset($_GET['section']) && $_GET['section'] === '3' ? ' active' : ''); ?>" aria-current="page" href="../../public/index.php?page=4&section=3"><?= $categorietById['project_type']; ?></a>
+            <a class="nav-link <?php echo (isset($_GET['section']) && $_GET['section'] === '3' ? ' active' : ''); ?>" aria-current="page" href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=4&section=3"><?= $categorietById['project_type']; ?></a>
         </li>
     <?php } ?>
 </ul>
 
 <?php
 if (!isset($_GET['section'])) {
-    include('../vue/categorie_saisie.php');
+    include('categorie_saisie.php');
 } else {
     if ($_GET['section'] == 2) {
-        include('../vue/categories_gestion.php');
+        include('categories_gestion.php');
     }
     if ($_GET['section'] == 3) {
-        include('../vue/categorie_fiche.php');
+        include('categorie_fiche.php');
     }
 }
 

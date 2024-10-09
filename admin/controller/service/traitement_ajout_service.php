@@ -1,46 +1,39 @@
 <?php
-
+require_once('../../../config.php');
 session_start();
-require '../../../src/classes/Project.php';
-require '../../../src/classes/Database.php';
+require CLASSES_PATH.'/Service.php';
+require CLASSES_PATH.'/Database.php';
+$page = '5';
+$header = sprintf('Location: %s?page=%s', ADMIN_PUBLIC_URL, $page);
+$success_message = 'Le service a été bien ajouté';
+$fail_message = 'Le service n\'a pas été ajouté correctement';
 
-$project = new Project();
+$service = new Service();
 
-$requiredFields = ['enName', 'enContent', 'frName', 'frContent', 'date', 'categ'];
-$isValid = true;
-
-foreach ($requiredFields as $field) {
-    if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
-        $isValid = false;
-        break;
-    }
+if (!isset($_POST['frName'], $_POST['enName'], $_POST['frContent'], $_POST['enContent']) ||
+    empty($_POST['frName']) ||
+    empty($_POST['enName']) ||
+    empty($_POST['frContent']) ||
+    empty($_POST['enContent'])
+) {
+    $_SESSION['fail-add-service'] = $fail_message;
+    header($header);
+    exit();
 }
 
-if ($isValid) {
-    $enName = htmlspecialchars($_POST['enName']);
-    $frName = htmlspecialchars($_POST['frName']);
-    $enContent = htmlspecialchars($_POST['enContent']);
-    $frContent = htmlspecialchars($_POST['frContent']);
-    $date = htmlspecialchars($_POST['date']);
-    $idCateg = htmlspecialchars($_POST['categ']);
+$frName = htmlspecialchars($_POST['frName']);
+$enName = htmlspecialchars($_POST['enName']);
+$frContent = htmlspecialchars($_POST['frContent']);
+$enContent = htmlspecialchars($_POST['enContent']);
 
-    try {
-        $id = $project->save1($date, $idCateg);
-        $project->save2($id, $enName, $enContent, 'en');
-        $project->save2($id, $frName, $frContent, 'fr');
-        $_SESSION['success-add-project'] = 'Le project a été ajouté correctement';
-        header('Location: ../../public/index.php?page=2');
-        exit();
-    } catch (Exception $e) {
-        $_SESSION['fail-add-project'] = 'Le project n\'a pas été ajouté correctement';
-        $_SESSION['form_data'] = $_POST;
-        session_write_close();
-        header('Location: ../../public/index.php?page=2');
-        throw new Exception("Unable to add project: " . $e->getMessage());
-    }
-} else {
-    $_SESSION['fail-add-project'] = 'Veuillez remplir tous les données';
-    $_SESSION['form_data'] = $_POST;
-    session_write_close();
-    header('Location: ../../public/index.php?page=2');
+try {
+    $id = $service->save1();
+    $service->save2($id, 'fr', $frName, $frContent);
+    $service->save2($id, 'en', $enName, $enContent);
+    $_SESSION['success-add-service'] = $success_message;
+} catch (Exception $e) {
+    $_SESSION['fail-add-service'] = $fail_message;
+    throw new Exception("Unable to add service: " . $e->getMessage());
 }
+header($header);
+exit();

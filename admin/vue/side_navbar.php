@@ -3,36 +3,25 @@
 $currentPage = $_GET['page'] ?? '';
 ?>
 <div class="d-flex flex-column ParentSideBar align-items-center align-items-sm-start px-3 pt-2">
-  <a href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=3" class="border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '3' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
-    <img src="<?= ADMIN_ASSETS_URL ?>/images/home.png" alt="">
-    <span>Tableau de bord</span>
-  </a>
   <a href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=2" class="border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '2' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
-    <img src="<?= ADMIN_ASSETS_URL ?>/images/pawprint.png" alt="" />
     <span>Projets</span>
   </a>
-  <a href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=4" class=" border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '4' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
-    <img src="<?= ADMIN_ASSETS_URL ?>/images/blog.png" alt="" />
+  <a href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=4" class="border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '4' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
     <span>Catégories</span>
   </a>
-  <a href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=5" class=" border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '5' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
-    <img src="<?= ADMIN_ASSETS_URL ?>/calendar.png" alt="" />
+  <a href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=5" class="border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '5' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
     <span>Services</span>
   </a>
-  <a href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=6" class=" border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '6' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
-    <img src="<?= ADMIN_ASSETS_URL ?>/images/newspaper.png" alt="" />
+  <a href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=6" class="border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '6' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
     <span>À propos</span>
   </a>
-  <a href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=7" class=" border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '7' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
-    <img src="<?= ADMIN_ASSETS_URL ?>/images/store.png" alt="" />
+  <a href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=7" class="border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '7' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
     <span>Page d'accueil</span>
   </a>
-  <a href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=8" class=" border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '8' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
-    <img src="<?= ADMIN_ASSETS_URL ?>/images/pet.png" alt="" />
+  <a href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=8" class="border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '8' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
     <span>Admins</span>
   </a>
   <a href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=9" class="border-end-0 d-inline-block text-truncate col-12 navBtn <?php echo $currentPage == '11' ? 'active' : ''; ?>" data-bs-parent="#sidebar">
-    <img src="<?= ADMIN_ASSETS_URL ?>/images/pawprint.png" alt="" />
     <span>Messagerie</span>
   </a>
 

@@ -27,22 +27,53 @@ class Service
         $this->order = $order;
     }
 
-    public function save()
+    /**
+     * Save the service and return the newly inserted service ID.
+     * @throws Exception
+     */
+    public function save1()
     {
         try {
-            $stmt = $this->db->prepare("INSERT INTO services (titre_service, info_service, order) VALUES (?, ?, ?)");
-            $stmt->execute([
-                $this->titre_service,
-                $this->info_service,
-                $this->order,
+            // Get the maximum order value from the services table
+            $maxOrderQuery = $this->db->prepare('SELECT MAX(`order`) as max_order FROM services');
+            $maxOrderQuery->execute();
+            $row = $maxOrderQuery->fetch();
 
-            ]);
+            // Calculate the next order
+            $max_order = $row['max_order'] ?? 0;
+            $next_order = $max_order + 1;
+
+            // Insert the new service with the next order value
+            $req = "INSERT INTO services (`order`) VALUES (?)";
+            $stmt = $this->db->prepare($req);
+            $stmt->execute([$next_order]);
+
+            // Return the ID of the newly inserted service
             return $this->db->lastInsertId();
         } catch (PDOException $e) {
-            error_log("Unable to save user: " . $e->getMessage());
-            throw new Exception("Unable to save user.");
+            error_log("Unable to save service: " . $e->getMessage());
+            throw new Exception("Unable to save service.");
         }
     }
+
+    /**
+     * Save service translation for a given language.
+     * @throws Exception
+     */
+    public function save2($id_service, $lang_code, $titre_service, $info_service)
+    {
+        try {
+            // Insert the translation of the service into the translations table
+            $stmt = $this->db->prepare("INSERT INTO services_translations (id_service, lang_code, titre_service, info_service) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$id_service, $lang_code, $titre_service, $info_service]);
+
+            return $this->db->lastInsertId();
+        } catch (PDOException $e) {
+            error_log("Unable to save service_translations: " . $e->getMessage());
+            throw new Exception("Unable to save service_translations.");
+        }
+    }
+
     public function getAll($lang)
     {
         try {
@@ -53,7 +84,6 @@ class Service
             throw new Exception("Unable to retrieve services: " . $e->getMessage());
         }
     }
-
 
     public function getAllByOrder($lang)
     {
@@ -83,7 +113,6 @@ class Service
         }
     }
 
-
     public function getByIdAndLang($id, $lang)
     {
         try {
@@ -109,5 +138,45 @@ class Service
             }
         }
         return "Order updated successfully.";
+    }
+
+    public function update1($date, $type, $project)
+    {
+        try {
+            $req = "UPDATE services SET project_date = ?, id_project_type = ? WHERE id_project = ?";
+            $stmt = $this->db->prepare($req);
+            $stmt->execute([$date, $type, $project]);
+
+            return $stmt->rowCount();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function update2($titre_service, $info_service, $id, $lang)
+    {
+        try {
+            $req = "UPDATE services_translations SET titre_service = ?, info_service = ? WHERE id_service = ? AND lang_code = ?";
+            $stmt = $this->db->prepare($req);
+            $stmt->execute([$titre_service, $info_service, $id, $lang]);
+            $affectedRows = $stmt->rowCount();
+            return $affectedRows;
+        } catch (PDOException $e) {
+            error_log("Error in update2: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function delete($id)
+    {
+        try {
+            $req = "UPDATE services SET deleted = 1 WHERE id_service = ?";
+            $stmt = $this->db->prepare($req);
+            $stmt->execute([$id]);
+            return $stmt;
+        } catch (PDOException $e) {
+            throw new Exception("Unable to delete project_type: " . $e->getMessage());
+        }
     }
 }

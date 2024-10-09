@@ -1,4 +1,4 @@
-<form action="../src/controlleur/sendMessage.php" method="post">
+<form action="../src/controller/sendMessage.php" method="post">
     <div class="container">
         <div class="white-block mt-5">
             <h2 class="title my-auto"><?= $translations['contact us']; ?></h2>
