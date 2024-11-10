@@ -1,4 +1,9 @@
 <?php
+if (!isset($_SESSION['idUserAdmin'])) {
+    $indexLocation = sprintf('Location: %s', ADMIN_PUBLIC_URL);
+    header($indexLocation);
+    exit();
+}
 require CLASSES_PATH . '/Service.php';
 
 $page = 5;
@@ -23,7 +28,7 @@ $serviceEn = $service->getByIdAndLang($id, 'en');// if (!isset($_SESSION[''])) {
     </div>
 </div>
 
-<ul class="nav nav-tabs navbiens mt-3">
+<ul class="nav nav-tabs navbiens">
     <li class="nav-item">
         <a class="nav-link <?= (!isset($_GET['section']) ? 'active' : ''); ?>" aria-current="page" href="<?= $saisieUrl; ?>">Saisie</a>
     </li>

@@ -91,14 +91,33 @@ class User
         }
     }
 
-    public function adminExists($mail)
+    public function authenticate($email, $password)
     {
         try {
-            $stmt = $this->db->prepare("SELECT * FROM `users` WHERE `admin` = 1 and `email` = ?");
-            $stmt->execute([$mail]);
-            return $stmt->fetchAll();
+            $stmt = $this->db->prepare("SELECT * FROM `users` WHERE `email` = ?");
+            $stmt->execute([$email]);
+            $user = $stmt->fetch();
+
+            if ($user && password_verify($password, $user['mdp'])) {
+                return $user;
+            } else {
+                return false;
+            }
         } catch (PDOException $e) {
-            throw new Exception("Unable to retrieve messages: " . $e->getMessage());
+            throw new Exception("Unable to authenticate user: " . $e->getMessage());
+        }
+    }
+
+    public function isAdmin($email)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT `admin` FROM `users` WHERE `email` = ?");
+            $stmt->execute([$email]);
+            $user = $stmt->fetch();
+
+            return $user && $user['admin'] == 1;
+        } catch (PDOException $e) {
+            throw new Exception("Unable to check admin status: " . $e->getMessage());
         }
     }
 
@@ -135,7 +154,33 @@ class User
             $stmt->execute([$id]);
             return $stmt->fetch();
         } catch (PDOException $e) {
-            throw new Exception("Unable to retrieve message: " . $e->getMessage());
+            throw new Exception("Unable to user id: " . $e->getMessage());
+        }
+    }
+
+    public function isUserExists($email): bool
+    {
+        try {
+            $rawSql = "SELECT `email` FROM `users` WHERE `email` = ?";
+            $stmt = $this->db->prepare($rawSql);
+            $stmt->execute([$email]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result !== false;
+        } catch (PDOException $e) {
+            throw new Exception("Unable to retrieve user: " . $e->getMessage());
+        }
+    }
+
+    public function createUser($nom, $prenom, $email, $mdp)
+    {
+        try {
+            $rawSql = "INSERT INTO `users` (nom, prenom, email, mdp) VALUES (?, ?, ?, ?)";
+            $stmt = $this->db->prepare($rawSql);
+            $stmt->execute([$nom, $prenom, $email, $mdp]);
+            return $this->db->lastInsertId();
+        } catch (PDOException $e) {
+            throw new Exception("Unable to create user: " . $e->getMessage());
         }
     }
 }

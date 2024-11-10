@@ -3,7 +3,7 @@ session_start();
 require '../../src/classes/Project.php';
 require '../../src/classes/Database.php';
 require '../../src/classes/Service.php';
-
+require '../../src/classes/About.php';
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -26,7 +26,8 @@ try {
     // Mapping of table names to class names
     $tableClassMap = [
         'project' => 'Project',
-        'service' => 'Service'
+        'service' => 'Service',
+        'about' => 'About',
     ];
 
     // Check if the table name is valid

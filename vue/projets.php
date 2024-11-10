@@ -2,7 +2,7 @@
 require '../src/classes/Project.php';
 $project = new Project();
 
-foreach ($project->getAllOnlineByOrderNotDeleted($lang, $lang) as $indice => $project) {
+foreach ($project->getAllOnlineByOrderNotDeleted($lang) as $indice => $project) {
     if ($indice % 2 == 0) {
 ?>
     <section class="container-fluid">

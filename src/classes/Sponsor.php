@@ -44,4 +44,40 @@ class Sponsor
             throw new Exception("Unable to retrieve messages: " . $e->getMessage());
         }
     }
+
+    function insertSponsor($sponsor, $image)
+    {
+        try {
+            $db = $this->db;
+            $db->beginTransaction();
+
+            $insertHomeQuery = $db->prepare('INSERT INTO sponsors (sponsor, deleted) VALUES (?,?)');
+            $insertHomeQuery->execute([$sponsor, 0]);
+            $idImagesHome = $db->lastInsertId();
+
+            $insertImageQuery = $db->prepare('INSERT INTO images (image, id_sponsor) VALUES (?,?)');
+            $result = $insertImageQuery->execute([$image, $idImagesHome]);
+
+            $db->commit();
+
+            return $result;
+        } catch (Exception $e) {
+            $db->rollBack();
+            echo "Failed: " . $e->getMessage();
+            return false;
+        }
+    }
+
+
+    public function delete($id)
+    {
+        try {
+            $req = "UPDATE sponsors SET deleted = 1 WHERE id_sponsor = ?";
+            $stmt = $this->db->prepare($req);
+            $stmt->execute([$id]);
+            return $stmt;
+        } catch (PDOException $e) {
+            throw new Exception("Unable to delete image : " . $e->getMessage());
+        }
+    }
 }

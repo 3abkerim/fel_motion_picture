@@ -16,7 +16,8 @@ const CSS = ADMIN_ASSETS_URL . '/css/css.css';
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>index</title>
+    <script src="https://kit.fontawesome.com/0f0b5058e5.js" crossorigin="anonymous"></script>
+    <title>Backoffice : FEL Motion Picture</title>
     <link rel="stylesheet" href="<?= BOOTSTRAP_CSS ?>" />
     <link rel="stylesheet" href="<?= CSS ?>" />
     <link rel="icon" href="#" />
@@ -26,47 +27,59 @@ const CSS = ADMIN_ASSETS_URL . '/css/css.css';
 <body>
 <div class="container-fluid ">
     <?php
-    if (isset($_GET['page'])) { ?>
-        <div class="row navBo2 testRelative2">
-            <div class="col-12">
-                <?php include '../vue/header.php'; ?>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-2 flex-md-column navBo d-none d-lg-block border-0 rounded-0">
-                <div class="row navBo">
-                    <?php include '../vue/side_navbar.php'; ?>
+    if (isset($_GET['page'])) {
+        if ($_GET['page'] != 3) { ?>
+            <div class="row navBo2 testRelative2">
+                <div class="col-12">
+                    <?php include '../vue/header.php'; ?>
                 </div>
             </div>
 
-            <div class="col-lg-10 testRelative">
-                <?php
-                if ($_GET['page'] == 2) {
-                    include ADMIN_VUE_PATH . '/project/projets.php';
-                } elseif ($_GET['page'] == 3) {
-                    include ADMIN_VUE_PATH . '/tableau_de_bord.php';
-                } elseif ($_GET['page'] == 4) {
-                    include ADMIN_VUE_PATH . '/categorie/categories.php';
-                } elseif ($_GET['page'] == 5) {
-                    include ADMIN_VUE_PATH . '/service/services.php';
-                }
-                ?>
-            </div>
-        </div>
+            <div class="row">
+                <div class="col-md-2 flex-md-column navBo d-none d-lg-block border-0 rounded-0">
+                    <div class="row navBo">
+                        <?php include '../vue/side_navbar.php'; ?>
+                    </div>
+                </div>
+                <div class="col-lg-10 testRelative">
         <?php
-    } else { ?>
-        <div class="row">
-            <div class="col-12">
-                <?php include ADMIN_VUE_PATH . '/log_in.php'; ?>
+        } else {
+            echo '<div class="w-25 m-auto bg-secondary rounded">';
+        }
+        if ($_GET['page'] == 2) {
+            include ADMIN_VUE_PATH . '/project/projets.php';
+        } elseif ($_GET['page'] == 3) {
+            include ADMIN_VUE_PATH . '/signUp/signUp.php';
+        } elseif ($_GET['page'] == 4) {
+            include ADMIN_VUE_PATH . '/categorie/categories.php';
+        } elseif ($_GET['page'] == 5) {
+            include ADMIN_VUE_PATH . '/service/services.php';
+        } elseif ($_GET['page'] == 6) {
+            include ADMIN_VUE_PATH . '/a_propos/about_us.php';
+        } elseif ($_GET['page'] == 7) {
+            include ADMIN_VUE_PATH . '/accueil/accueil.php';
+        } elseif ($_GET['page'] == 8) {
+            include ADMIN_VUE_PATH . '/admins/admins.php';
+        } elseif ($_GET['page'] == 9) {
+            include ADMIN_VUE_PATH . '/messagerie/messagerie.php';
+        }
+
+        echo '</div>';
+
+        if ($_GET['page'] != 3) {
+            echo '</div>';
+        }
+
+        } else { ?>
+            <div class="w-25 m-auto bg-secondary rounded">
+                <?php include ADMIN_VUE_PATH . '/log_in/log_in.php'; ?>
             </div>
+            <?php
+        }
+        ?>
         </div>
-        <?php
-    }
-    ?>
-</div>
-<script src="<?= BOOTSTRAP_JS ?>"></script>
-<script src="<?= JS ?>"></script>
+        <script src="<?= BOOTSTRAP_JS ?>"></script>
+        <script src="<?= JS ?>"></script>
 </body>
 
 </html>

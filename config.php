@@ -6,7 +6,7 @@ const CLASSES_PATH = SRC_PATH . '/classes';
 const PUBLIC_PATH = BASE_PATH . '/public';
 const VUE_PATH = BASE_PATH . '/vue';
 const ASSETS_PATH = PUBLIC_PATH . '/assets';
-const IMAGES_PATH = ASSETS_PATH . '/images';
+const IMAGES_PATH = ASSETS_PATH . '/images/';
 
 
 // config.php Admin
@@ -27,7 +27,7 @@ const PUBLIC_URL = BASE_URL . '/public';
 
 
 const ASSETS_URL = PUBLIC_URL . '/assets';
-const IMAGES_URL = ASSETS_URL . '/images';
+const IMAGES_URL = ASSETS_URL . '/images/';
 
 // ADMIN
 const ADMIN_PUBLIC_URL = ADMIN_BASE_URL . '/public';
