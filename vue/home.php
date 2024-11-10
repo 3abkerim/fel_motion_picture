@@ -1,13 +1,17 @@
 <?php
-require '../src/classes/Sponsor.php';
-require '../src/classes/HomeImages.php';
-require '../src/classes/About.php';
+require '../config.php';
 
+require CLASSES_PATH . '/Sponsor.php';
+require CLASSES_PATH . '/HomeImages.php';
+require CLASSES_PATH . '/About.php';
+require CLASSES_PATH . '/HomepageText.php';
 
 $sponsors = new Sponsor();
 $HomeImages = new HomeImages();
 $about = new About();
+$homepageText = new HomepageText();
 
+$homepageTextGetByLang = $homepageText->getByLang($lang);
 ?>
 <section class="container-fluid">
     <video class="video-home" src="../public/assets/videos/EFL_logo_light.mp4" muted autoplay playsinline>
@@ -21,7 +25,7 @@ $about = new About();
     </div>
     <div class="container-sm mb-5">
         <h3 class="text-white text-center">
-            <?= $about->getqsn($lang); ?>
+            <?= $homepageTextGetByLang['text'] ?>
         </h3>
     </div>
 </section>
@@ -33,11 +37,11 @@ $about = new About();
     foreach ($HomeImages->getAllByOrderNotDeleted() as $indice => $homeimg) {
         if ($indice % 2 == 0) {
     ?>
-            <div class="d-flex justify-content-end project-img mt-4" data-aos="fade-left"><img class="img-fluid" src="<?= $homeimg['image']; ?>" alt="behind the scenes image"></div>
+            <div class="d-flex justify-content-end project-img mt-4" data-aos="fade-left"><img class="img-fluid" src="../public/assets/images/<?= $homeimg['image']; ?>" alt="behind the scenes image"></div>
         <?php
         } else {
         ?>
-            <div class="d-flex justify-content-start project-img mt-4 fade-left" data-aos="fade-right"><img class="img-fluid" src="<?= $homeimg['image']; ?>" alt="behind the scenes image"></div>
+            <div class="d-flex justify-content-start project-img mt-4 fade-left" data-aos="fade-right"><img class="img-fluid" src="../public/assets/images/<?= $homeimg['image']; ?>" alt="behind the scenes image"></div>
         <?php
         }
         ?>
@@ -52,7 +56,7 @@ $about = new About();
             <?php
             foreach ($sponsors->getAllNotDeleted() as $sponsor) {
             ?>
-                <img src="<?= $sponsor['image']; ?>" alt="<?= $sponsor['sponsor']; ?>">
+                <img src="<?= IMAGES_URL.$sponsor['image']; ?>" alt="<?= $sponsor['sponsor']; ?>">
             <?php
             }
             ?>
