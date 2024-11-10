@@ -1,10 +1,11 @@
 <?php
-require CLASSES_PATH . '/Categorie.php';
+if (!isset($_SESSION['idUserAdmin'])) {
+    $indexLocation = sprintf('Location: %s', ADMIN_PUBLIC_URL);
+    header($indexLocation);
+    exit();
+}
 
-// if (!isset($_SESSION[''])) {
-//     header('Location:../public/index.php?');
-//     exit();
-// }
+require CLASSES_PATH . '/Categorie.php';
 ?>
 <div class="row">
     <div class="col-12">
@@ -22,7 +23,7 @@ $categorietById = $categorie->getByIdAndLang($id, 'fr');
 
 
 
-<ul class="nav nav-tabs navbiens mt-3">
+<ul class="nav nav-tabs navbiens">
     <li class="nav-item">
         <a class="nav-link <?php echo (!isset($_GET['section']) ? ' active' : ''); ?>" aria-current="page" href="<?= ADMIN_PUBLIC_URL ?>/index.php?page=4">Saisie</a>
     </li>
